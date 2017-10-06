@@ -7,12 +7,12 @@
 //
 
 #import "DiscoverViewController.h"
-#import "Masonry.h"
-#import "DiscoverTableViewCell.h"
+#import "DiscoverMainCell.h"
+#import "DiscoverMainCellModel.h"
 
 #import <objc/message.h>
 
-@interface DiscoverViewController ()<UISearchResultsUpdating,UISearchControllerDelegate>
+@interface DiscoverViewController ()
 
 @property(nonatomic) UISearchController *searchVc;
 
@@ -20,98 +20,53 @@
 
 @implementation DiscoverViewController
 
-static NSString *const reuseId = @"reuse";
-
+#pragma mark - 生命周期
 - (void)viewDidLoad {
-    @autoreleasepool {
-        
-    }
     [super viewDidLoad];
-    self.tableView.tableFooterView = UIView.new;
-    
-    self.searchVc = [[UISearchController alloc] initWithSearchResultsController:nil];
-    self.searchVc.searchResultsUpdater = self;
-    self.searchVc.delegate = self;
-    self.searchVc.searchBar.placeholder = @"搜索";
-    
-    self.tableView.tableHeaderView = self.searchVc.searchBar;
-    self.tableView.separatorInset = UIEdgeInsetsZero;
-    [self.tableView registerNib:[UINib nibWithNibName:@"DiscoverTableViewCell" bundle:nil] forCellReuseIdentifier:reuseId];
+    [self setUpView];
 }
 
-#pragma mark delegate
-
-- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
-    
+#pragma mark - 初始化
+- (void)setUpView {
+    [self setUpNavigationBar];
+    [self setUpTableView];
 }
 
+- (void)setUpNavigationBar {
+    UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchBtnClick)];
+    self.navigationItem.rightBarButtonItem = searchItem;
+}
+
+- (void)searchBtnClick {
+
+}
+
+- (void)setUpTableView {
+    [self.tableView registerClass:[DiscoverMainCell class] forCellReuseIdentifier:@"cell"];
+    self.tableView.estimatedRowHeight = 400;
+}
+
+#pragma mark - TableView Delegate DataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return 30;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    DiscoverTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseId forIndexPath:indexPath];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    DiscoverMainCell *cell = (DiscoverMainCell *)[tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (!cell) {
+        cell = [[DiscoverMainCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    }
+    DiscoverMainCellModel *model = [[DiscoverMainCellModel alloc] init];
+    model.portrait = [UIImage imageNamed:@"People"];
+    model.userName = @"张力明";
+    model.content = @"这里是正文Content Hear, 这里是正文Content Hear, 这里是正文Content Hear, 这里是正文Content Hear, 这里是正文Content Hear, 这里是正文Content Hear";
+    model.imageArray = @[@"dad", @"dad", @"dad", @"dad", @"dad", @"dad", @"dad", @"dad", @"dad"];
+    [cell setModel:model];
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 49;
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    UIEdgeInsets edg = UIEdgeInsetsMake(0, 0, 0, 0);
+    cell.separatorInset = edg;
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 138;
-}
-
-- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, S_WIDTH, 49)];
-    
-    UIButton *button0 = [self createButtonWithTitle:@"班级笔记"];
-    [view addSubview:button0];
-    UIButton *button1 = [self createButtonWithTitle:@"今日笔记"];
-    [view addSubview:button1];
-    UIButton *button2 = [self createButtonWithTitle:@"周笔记"];
-    [view addSubview:button2];
-    UIButton *button3 = [self createButtonWithTitle:@"月笔记"];
-    [view addSubview:button3];
-    
-    [button0 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(view);
-        make.width.mas_equalTo(view).dividedBy(4);
-        make.centerY.mas_equalTo(view);
-        make.centerX.mas_equalTo(view).multipliedBy(0.25);
-    }];
-    [button1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(view);
-        make.width.mas_equalTo(view).dividedBy(4);
-        make.centerY.mas_equalTo(view);
-        make.centerX.mas_equalTo(view).multipliedBy(0.75);
-    }];
-    [button2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(view);
-        make.width.mas_equalTo(view).dividedBy(4);
-        make.centerY.mas_equalTo(view);
-        make.centerX.mas_equalTo(view).multipliedBy(1.25);
-    }];
-    [button3 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(view);
-        make.width.mas_equalTo(view).dividedBy(4);
-        make.centerY.mas_equalTo(view);
-        make.centerX.mas_equalTo(view).multipliedBy(1.75);
-    }];
-    
-    return view;
-}
-
-#pragma mark custom function
-
-- (UIButton *)createButtonWithTitle:(NSString *)title {
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitle:title forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    button.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    button.layer.borderWidth = 1.f;
-    return button;
-}
-
 @end
