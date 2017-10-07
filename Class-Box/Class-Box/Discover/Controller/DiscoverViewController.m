@@ -14,8 +14,6 @@
 
 @interface DiscoverViewController ()
 
-@property(nonatomic) UISearchController *searchVc;
-
 @end
 
 @implementation DiscoverViewController
@@ -32,9 +30,28 @@
     [self setUpTableView];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+
+    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:nil];
+}
+
 - (void)setUpNavigationBar {
     UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchBtnClick)];
     self.navigationItem.rightBarButtonItem = searchItem;
+    self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.translucent = NO;
+    if (SYSTEM_VERSION == 11.0) {
+        self.navigationController.navigationBar.prefersLargeTitles = YES;
+    }
 }
 
 - (void)searchBtnClick {

@@ -85,6 +85,6 @@
 ///5.5英寸
 #define IS_IPHONE_5_5 (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
 
-
+#define SYSTEM_VERSION [UIDevice currentDevice].systemVersion.doubleValue
 
 @end
