@@ -6,13 +6,33 @@
 //  Copyright © 2017 sherlock. All rights reserved.
 //
 
+#import <Masonry/View+MASAdditions.h>
 #import "PublishViewController.h"
-#import "View+MASAdditions.h"
+#import "HXPhotoManager.h"
+#import "HXPhotoView.h"
+#import "HXPhotoViewController.h"
+
+static const CGFloat kPhotoViewMargin = 12.0;
+
+@interface PublishViewController()<HXPhotoViewDelegate, UITextViewDelegate, UIScrollViewDelegate>
+
+@property (strong, nonatomic) HXPhotoManager *manager;
+@property (strong, nonatomic) HXPhotoView *photoView;
+@property (strong, nonatomic) UIScrollView *scrollView;
+@property (strong, nonatomic) UITextView *textView;
+
+@end
 
 @implementation PublishViewController{
-    UITextField *_titleField;
-    UITextView *_contentView;
-    UIView *_line;
+    UILabel *_placeholderLabel;
+}
+
+#pragma mark - 懒加载
+- (HXPhotoManager *)manager {
+    if (!_manager) {
+        _manager = [[HXPhotoManager alloc] initWithType:HXPhotoManagerSelectedTypePhoto];
+    }
+    return _manager;
 }
 
 #pragma mark - 生命周期
@@ -20,7 +40,6 @@
     [super viewDidLoad];
     [self setUpNavigationBar];
     [self setUpView];
-    [self setUpConstraints];
 }
 
 #pragma mark - 初始化
@@ -44,45 +63,73 @@
 }
 
 - (void)setUpView {
-    _titleField = [[UITextField alloc] init];
-    _titleField.backgroundColor = RGB_COLOR(245, 245, 245);
-    _titleField.font = [UIFont systemFontOfSize:12];
-    _titleField.placeholder = @"请输入标题";
-    [self.view addSubview:_titleField];
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.automaticallyAdjustsScrollViewInsets = YES;
 
-    _line = [[UIView alloc] init];
-    _line.backgroundColor = [UIColor lightGrayColor];
-    [self.view addSubview:_line];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    scrollView.alwaysBounceVertical = YES;
+    [self.view addSubview:scrollView];
+    self.scrollView = scrollView;
+    self.scrollView.delegate = self;
 
-    _contentView = [[UITextView alloc] init];
-    _contentView.backgroundColor = [UIColor lightGrayColor];
-    _contentView.font = [UIFont systemFontOfSize:12];
-    _contentView.layer.borderWidth = 1;
-    _contentView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    [self.view addSubview:_contentView];
+    CGFloat width = scrollView.frame.size.width;
+
+    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(kPhotoViewMargin, 0, width - kPhotoViewMargin * 2, 150)];
+    textView.backgroundColor = [UIColor whiteColor];
+    textView.font = [UIFont systemFontOfSize:16];
+    _placeholderLabel = [[UILabel alloc] init];
+    _placeholderLabel.textColor = [UIColor lightGrayColor];
+    _placeholderLabel.font = [UIFont systemFontOfSize:16];
+    _placeholderLabel.text = @"分享点什么吧";
+    [textView addSubview:_placeholderLabel];
+    [_placeholderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(textView.mas_top).offset(8);
+        make.leading.mas_equalTo(textView.mas_leading).offset(5);
+    }];
+    self.textView = textView;
+    self.textView.delegate = self;
+    [scrollView addSubview:textView];
+
+    HXPhotoView *photoView = [HXPhotoView photoManager:self.manager];
+    photoView.frame = CGRectMake(kPhotoViewMargin, kPhotoViewMargin + 160, width - kPhotoViewMargin * 2, 0);
+    photoView.delegate = self;
+    photoView.backgroundColor = [UIColor whiteColor];
+    [scrollView addSubview:photoView];
+    self.photoView = photoView;
 }
 
-- (void)setUpConstraints {
-    [_titleField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.view.mas_top).offset(80);
-        make.right.mas_equalTo(self.view.mas_right).offset(-30);
-        make.left.mas_equalTo(self.view.mas_left).offset(30);
-        make.height.mas_equalTo(40);
-    }];
 
-    [_line mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(self.view.mas_right).offset(40);
-        make.left.mas_equalTo(self.view.mas_left).offset(40);
-        make.height.mas_equalTo(1);
-        make.top.mas_equalTo(_titleField.mas_bottom);
-    }];
+#pragma mark - UITextViewDelegate
+-(void)textViewDidChange:(UITextView *)textView {
 
-    [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(_titleField.mas_bottom).offset(20);
-        make.right.mas_equalTo(self.view.mas_right).offset(40);
-        make.left.mas_equalTo(self.view.mas_left).offset(40);
-        make.height.mas_equalTo(80);
-    }];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = 20;// 字体的行间距
+    NSDictionary *attributes = @{
+            NSFontAttributeName:[UIFont systemFontOfSize:15],
+            NSParagraphStyleAttributeName:paragraphStyle
+    };
+    textView.attributedText = [[NSAttributedString alloc] initWithString:textView.text attributes:attributes];
 }
 
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if (![text isEqualToString:@""]) {
+        _placeholderLabel.hidden = YES;
+    }
+    if ([text isEqualToString:@""] && range.location == 0 && range.length == 1) {
+        _placeholderLabel.hidden = NO;
+    }
+    return YES;
+}
+
+
+#pragma mark - UIScrollView
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    [self.view endEditing:YES];
+}
+
+#pragma mark - HXPhotoViewDelegate
+// 代理返回 选择、移动顺序、删除之后的图片以及视频
+- (void)photoViewChangeComplete:(NSArray<HXPhotoModel *> *)allList Photos:(NSArray<HXPhotoModel *> *)photos Videos:(NSArray<HXPhotoModel *> *)videos Original:(BOOL)isOriginal {
+
+}
 @end
