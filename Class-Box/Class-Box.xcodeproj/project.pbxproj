@@ -24,10 +24,6 @@
 		1680E1091F7602C60025A17E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1680E0EF1F7602C60025A17E /* Assets.xcassets */; };
 		1680E10A1F7602C60025A17E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1680E0F01F7602C60025A17E /* LaunchScreen.storyboard */; };
 		1680E10B1F7602C60025A17E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1680E0F21F7602C60025A17E /* Main.storyboard */; };
-		1680E10C1F7602C60025A17E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1680E0F61F7602C60025A17E /* Info.plist */; };
-		1680E10D1F7602C60025A17E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1680E0F71F7602C60025A17E /* main.m */; };
-		1680E12A1F76054B0025A17E /* DiscoverTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1680E1111F76054B0025A17E /* DiscoverTableViewCell.m */; };
-		1680E12B1F76054B0025A17E /* DiscoverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1680E1121F76054B0025A17E /* DiscoverTableViewCell.xib */; };
 		1680E12C1F76054B0025A17E /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1680E1151F76054B0025A17E /* DiscoverViewController.m */; };
 		1680E12D1F76054B0025A17E /* MeHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1680E1191F76054B0025A17E /* MeHeadTableViewCell.m */; };
 		1680E12E1F76054B0025A17E /* MeHeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1680E11A1F76054B0025A17E /* MeHeadTableViewCell.xib */; };
@@ -35,7 +31,12 @@
 		1680E1301F76054B0025A17E /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1680E1211F76054B0025A17E /* MessageViewController.m */; };
 		1680E1311F76054B0025A17E /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1680E1251F76054B0025A17E /* PublishViewController.m */; };
 		1680E1321F76054B0025A17E /* TimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1680E1291F76054B0025A17E /* TimeTableViewController.m */; };
+		87F175B5A5FC8BBB1C9C8AF1 /* DiscoverMainCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F17E78B00599A15A771C0A /* DiscoverMainCellModel.m */; };
+		87F17BFEF16695F0E9146A3D /* DiscoverSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F17A4A7C8CC666A2C0D68C /* DiscoverSearchViewController.m */; };
+		87F17E07F39351DBD43CF359 /* DiscoverMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F17CE7E74D07D8E3E75703 /* DiscoverMainCell.m */; };
 		88FE1B435E789726CB608B6E /* libPods-Class-Box.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58D713302AFCD22CA118D239 /* libPods-Class-Box.a */; };
+		9FE6DF7D1F88710F004A1275 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE6DF7A1F88710F004A1275 /* main.m */; };
+		9FE6DF7E1F88710F004A1275 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FE6DF7C1F88710F004A1275 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,12 +91,6 @@
 		1680E0EF1F7602C60025A17E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1680E0F11F7602C60025A17E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1680E0F31F7602C60025A17E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1680E0F51F7602C60025A17E /* app.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = app.pch; sourceTree = "<group>"; };
-		1680E0F61F7602C60025A17E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1680E0F71F7602C60025A17E /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		1680E1101F76054B0025A17E /* DiscoverTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTableViewCell.h; sourceTree = "<group>"; };
-		1680E1111F76054B0025A17E /* DiscoverTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTableViewCell.m; sourceTree = "<group>"; };
-		1680E1121F76054B0025A17E /* DiscoverTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverTableViewCell.xib; sourceTree = "<group>"; };
 		1680E1141F76054B0025A17E /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
 		1680E1151F76054B0025A17E /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
 		1680E1181F76054B0025A17E /* MeHeadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeHeadTableViewCell.h; sourceTree = "<group>"; };
@@ -110,7 +105,16 @@
 		1680E1281F76054B0025A17E /* TimeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTableViewController.h; sourceTree = "<group>"; };
 		1680E1291F76054B0025A17E /* TimeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTableViewController.m; sourceTree = "<group>"; };
 		58D713302AFCD22CA118D239 /* libPods-Class-Box.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Class-Box.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		87F1783989BD2CF02560D411 /* DiscoverMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverMainCell.h; sourceTree = "<group>"; };
+		87F17A4A7C8CC666A2C0D68C /* DiscoverSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverSearchViewController.m; sourceTree = "<group>"; };
+		87F17C7963A4180514466DA5 /* DiscoverSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverSearchViewController.h; sourceTree = "<group>"; };
+		87F17CE7E74D07D8E3E75703 /* DiscoverMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverMainCell.m; sourceTree = "<group>"; };
+		87F17E78B00599A15A771C0A /* DiscoverMainCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverMainCellModel.m; sourceTree = "<group>"; };
+		87F17F6DCADFC7FAA6412955 /* DiscoverMainCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverMainCellModel.h; sourceTree = "<group>"; };
 		9502E0FEF356EC309D2DABB4 /* Pods-Class-Box.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Class-Box.release.xcconfig"; path = "Pods/Target Support Files/Pods-Class-Box/Pods-Class-Box.release.xcconfig"; sourceTree = "<group>"; };
+		9FE6DF7A1F88710F004A1275 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SupportingFiles/main.m; sourceTree = SOURCE_ROOT; };
+		9FE6DF7B1F88710F004A1275 /* app.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = app.pch; path = SupportingFiles/app.pch; sourceTree = SOURCE_ROOT; };
+		9FE6DF7C1F88710F004A1275 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SupportingFiles/Info.plist; sourceTree = SOURCE_ROOT; };
 		B0843801013D7B02061BF530 /* Pods-Class-Box.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Class-Box.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Class-Box/Pods-Class-Box.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,13 +147,13 @@
 		16699EC41F7600CA001C089D = {
 			isa = PBXGroup;
 			children = (
+				9FE6DF791F8870E4004A1275 /* SupportingFiles */,
 				1680E0C31F7602C60025A17E /* Base */,
 				1680E0CA1F7602C60025A17E /* Class-Box */,
 				1680E0D31F7602C60025A17E /* Component */,
 				1680E0E41F7602C60025A17E /* Constant */,
 				1680E0E71F7602C60025A17E /* Main */,
 				1680E0EE1F7602C60025A17E /* Resource */,
-				1680E0F41F7602C60025A17E /* Supporting Files */,
 				16699EE91F7600CA001C089D /* Class-BoxTests */,
 				16699EF41F7600CA001C089D /* Class-BoxUITests */,
 				16699ECE1F7600CA001C089D /* Products */,
@@ -308,19 +312,10 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
-		1680E0F41F7602C60025A17E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				1680E0F51F7602C60025A17E /* app.pch */,
-				1680E0F61F7602C60025A17E /* Info.plist */,
-				1680E0F71F7602C60025A17E /* main.m */,
-			);
-			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		1680E10E1F76054B0025A17E /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				9FE6DF741F87680C004A1275 /* Model */,
 				1680E10F1F76054B0025A17E /* Cell */,
 				1680E1131F76054B0025A17E /* Controller */,
 			);
@@ -330,9 +325,8 @@
 		1680E10F1F76054B0025A17E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				1680E1101F76054B0025A17E /* DiscoverTableViewCell.h */,
-				1680E1111F76054B0025A17E /* DiscoverTableViewCell.m */,
-				1680E1121F76054B0025A17E /* DiscoverTableViewCell.xib */,
+				87F1783989BD2CF02560D411 /* DiscoverMainCell.h */,
+				87F17CE7E74D07D8E3E75703 /* DiscoverMainCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -342,6 +336,8 @@
 			children = (
 				1680E1141F76054B0025A17E /* DiscoverViewController.h */,
 				1680E1151F76054B0025A17E /* DiscoverViewController.m */,
+				87F17C7963A4180514466DA5 /* DiscoverSearchViewController.h */,
+				87F17A4A7C8CC666A2C0D68C /* DiscoverSearchViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -423,6 +419,26 @@
 				1680E1291F76054B0025A17E /* TimeTableViewController.m */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		9FE6DF741F87680C004A1275 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				87F17F6DCADFC7FAA6412955 /* DiscoverMainCellModel.h */,
+				87F17E78B00599A15A771C0A /* DiscoverMainCellModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		9FE6DF791F8870E4004A1275 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				9FE6DF7B1F88710F004A1275 /* app.pch */,
+				9FE6DF7C1F88710F004A1275 /* Info.plist */,
+				9FE6DF7A1F88710F004A1275 /* main.m */,
+			);
+			name = SupportingFiles;
+			path = Supp;
 			sourceTree = "<group>";
 		};
 		DD0EAF07D5002F7945E2EDA8 /* Pods */ = {
@@ -551,11 +567,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1680E12B1F76054B0025A17E /* DiscoverTableViewCell.xib in Resources */,
 				1680E10B1F7602C60025A17E /* Main.storyboard in Resources */,
-				1680E10C1F7602C60025A17E /* Info.plist in Resources */,
 				1680E12E1F76054B0025A17E /* MeHeadTableViewCell.xib in Resources */,
 				1680E10A1F7602C60025A17E /* LaunchScreen.storyboard in Resources */,
+				9FE6DF7E1F88710F004A1275 /* Info.plist in Resources */,
 				1680E1091F7602C60025A17E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -604,7 +619,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E13845B11025B70BD062987B /* [CP] Copy Pods Resources */ = {
@@ -639,9 +654,7 @@
 				1680E0FA1F7602C60025A17E /* BaseViewController.m in Sources */,
 				1680E1311F76054B0025A17E /* PublishViewController.m in Sources */,
 				1680E1051F7602C60025A17E /* QConstant.m in Sources */,
-				1680E12A1F76054B0025A17E /* DiscoverTableViewCell.m in Sources */,
 				1680E1301F76054B0025A17E /* MessageViewController.m in Sources */,
-				1680E10D1F7602C60025A17E /* main.m in Sources */,
 				1680E1321F76054B0025A17E /* TimeTableViewController.m in Sources */,
 				1680E1031F7602C60025A17E /* AutoTextView.m in Sources */,
 				1680E1061F7602C60025A17E /* AppDelegate.m in Sources */,
@@ -649,6 +662,10 @@
 				1680E1021F7602C60025A17E /* AutoTextField.m in Sources */,
 				1680E1081F7602C60025A17E /* MainTabBarViewController.m in Sources */,
 				1680E0F81F7602C60025A17E /* BaseNavigationController.m in Sources */,
+				87F17E07F39351DBD43CF359 /* DiscoverMainCell.m in Sources */,
+				87F175B5A5FC8BBB1C9C8AF1 /* DiscoverMainCellModel.m in Sources */,
+				9FE6DF7D1F88710F004A1275 /* main.m in Sources */,
+				87F17BFEF16695F0E9146A3D /* DiscoverSearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -805,7 +822,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/SupportingFiles/app.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cgy.Class-Box";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -818,7 +836,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/SupportingFiles/app.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cgy.Class-Box";
 				PRODUCT_NAME = "$(TARGET_NAME)";
