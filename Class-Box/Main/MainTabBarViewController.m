@@ -67,6 +67,7 @@
 #pragma mark - MainTabBarDelegate
 - (void)centerButtonCLick {
     PublishViewController *publishVC = [[PublishViewController alloc] init];
-    [self presentViewController:publishVC animated:YES completion:nil];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:publishVC];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 @end
