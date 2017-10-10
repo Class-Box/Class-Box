@@ -35,6 +35,19 @@
 		87F17BFEF16695F0E9146A3D /* DiscoverSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F17A4A7C8CC666A2C0D68C /* DiscoverSearchViewController.m */; };
 		87F17E07F39351DBD43CF359 /* DiscoverMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F17CE7E74D07D8E3E75703 /* DiscoverMainCell.m */; };
 		88FE1B435E789726CB608B6E /* libPods-Class-Box.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58D713302AFCD22CA118D239 /* libPods-Class-Box.a */; };
+		9F5E76351F8D01AA0090280A /* TimeTableExamTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E76271F8D01AA0090280A /* TimeTableExamTableViewCell.m */; };
+		9F5E76361F8D01AA0090280A /* TimeTableDiscoverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F5E76281F8D01AA0090280A /* TimeTableDiscoverTableViewCell.xib */; };
+		9F5E76371F8D01AA0090280A /* TimeTableDiscoverTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E76291F8D01AA0090280A /* TimeTableDiscoverTableViewCell.m */; };
+		9F5E76381F8D01AA0090280A /* TimeTableScoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F5E762A1F8D01AA0090280A /* TimeTableScoreTableViewCell.xib */; };
+		9F5E76391F8D01AA0090280A /* TimeTableExamTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F5E762B1F8D01AA0090280A /* TimeTableExamTableViewCell.xib */; };
+		9F5E763A1F8D01AA0090280A /* TimeTableScoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E762F1F8D01AA0090280A /* TimeTableScoreTableViewCell.m */; };
+		9F5E76411F8D03F90090280A /* SemesterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E763F1F8D03F90090280A /* SemesterView.m */; };
+		9F5E76421F8D03F90090280A /* TimeTableDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E76401F8D03F90090280A /* TimeTableDetailsView.m */; };
+		9F5E764B1F8D04F40090280A /* TimeTableScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E76431F8D04F40090280A /* TimeTableScoreViewController.m */; };
+		9F5E764C1F8D04F40090280A /* TimeTableScoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F5E76441F8D04F40090280A /* TimeTableScoreViewController.xib */; };
+		9F5E764D1F8D04F40090280A /* ExamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E76481F8D04F40090280A /* ExamViewController.m */; };
+		9F5E764E1F8D04F40090280A /* ExamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F5E76491F8D04F40090280A /* ExamViewController.xib */; };
+		9F5E764F1F8D04F40090280A /* TimeTableDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E764A1F8D04F40090280A /* TimeTableDiscoverViewController.m */; };
 		9FE6DF7D1F88710F004A1275 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE6DF7A1F88710F004A1275 /* main.m */; };
 		9FE6DF7E1F88710F004A1275 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FE6DF7C1F88710F004A1275 /* Info.plist */; };
 /* End PBXBuildFile section */
@@ -112,6 +125,27 @@
 		87F17E78B00599A15A771C0A /* DiscoverMainCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverMainCellModel.m; sourceTree = "<group>"; };
 		87F17F6DCADFC7FAA6412955 /* DiscoverMainCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverMainCellModel.h; sourceTree = "<group>"; };
 		9502E0FEF356EC309D2DABB4 /* Pods-Class-Box.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Class-Box.release.xcconfig"; path = "Pods/Target Support Files/Pods-Class-Box/Pods-Class-Box.release.xcconfig"; sourceTree = "<group>"; };
+		9F5E76271F8D01AA0090280A /* TimeTableExamTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTableExamTableViewCell.m; sourceTree = "<group>"; };
+		9F5E76281F8D01AA0090280A /* TimeTableDiscoverTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeTableDiscoverTableViewCell.xib; sourceTree = "<group>"; };
+		9F5E76291F8D01AA0090280A /* TimeTableDiscoverTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTableDiscoverTableViewCell.m; sourceTree = "<group>"; };
+		9F5E762A1F8D01AA0090280A /* TimeTableScoreTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeTableScoreTableViewCell.xib; sourceTree = "<group>"; };
+		9F5E762B1F8D01AA0090280A /* TimeTableExamTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeTableExamTableViewCell.xib; sourceTree = "<group>"; };
+		9F5E762C1F8D01AA0090280A /* TimeTableScoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTableScoreTableViewCell.h; sourceTree = "<group>"; };
+		9F5E762D1F8D01AA0090280A /* TimeTableExamTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTableExamTableViewCell.h; sourceTree = "<group>"; };
+		9F5E762E1F8D01AA0090280A /* TimeTableDiscoverTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTableDiscoverTableViewCell.h; sourceTree = "<group>"; };
+		9F5E762F1F8D01AA0090280A /* TimeTableScoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTableScoreTableViewCell.m; sourceTree = "<group>"; };
+		9F5E763D1F8D03F80090280A /* SemesterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterView.h; sourceTree = "<group>"; };
+		9F5E763E1F8D03F80090280A /* TimeTableDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTableDetailsView.h; sourceTree = "<group>"; };
+		9F5E763F1F8D03F90090280A /* SemesterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterView.m; sourceTree = "<group>"; };
+		9F5E76401F8D03F90090280A /* TimeTableDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTableDetailsView.m; sourceTree = "<group>"; };
+		9F5E76431F8D04F40090280A /* TimeTableScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTableScoreViewController.m; sourceTree = "<group>"; };
+		9F5E76441F8D04F40090280A /* TimeTableScoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeTableScoreViewController.xib; sourceTree = "<group>"; };
+		9F5E76451F8D04F40090280A /* TimeTableScoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTableScoreViewController.h; sourceTree = "<group>"; };
+		9F5E76461F8D04F40090280A /* TimeTableDiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTableDiscoverViewController.h; sourceTree = "<group>"; };
+		9F5E76471F8D04F40090280A /* ExamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamViewController.h; sourceTree = "<group>"; };
+		9F5E76481F8D04F40090280A /* ExamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamViewController.m; sourceTree = "<group>"; };
+		9F5E76491F8D04F40090280A /* ExamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamViewController.xib; sourceTree = "<group>"; };
+		9F5E764A1F8D04F40090280A /* TimeTableDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTableDiscoverViewController.m; sourceTree = "<group>"; };
 		9FE6DF7A1F88710F004A1275 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SupportingFiles/main.m; sourceTree = SOURCE_ROOT; };
 		9FE6DF7B1F88710F004A1275 /* app.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = app.pch; path = SupportingFiles/app.pch; sourceTree = SOURCE_ROOT; };
 		9FE6DF7C1F88710F004A1275 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SupportingFiles/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -407,6 +441,8 @@
 		1680E1261F76054B0025A17E /* TimeTable */ = {
 			isa = PBXGroup;
 			children = (
+				9F5E76261F8D01AA0090280A /* cell */,
+				9F5E76301F8D01AA0090280A /* Component */,
 				1680E1271F76054B0025A17E /* Controller */,
 			);
 			path = TimeTable;
@@ -415,10 +451,45 @@
 		1680E1271F76054B0025A17E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9F5E76471F8D04F40090280A /* ExamViewController.h */,
+				9F5E76481F8D04F40090280A /* ExamViewController.m */,
+				9F5E76491F8D04F40090280A /* ExamViewController.xib */,
+				9F5E76461F8D04F40090280A /* TimeTableDiscoverViewController.h */,
+				9F5E764A1F8D04F40090280A /* TimeTableDiscoverViewController.m */,
+				9F5E76451F8D04F40090280A /* TimeTableScoreViewController.h */,
+				9F5E76431F8D04F40090280A /* TimeTableScoreViewController.m */,
+				9F5E76441F8D04F40090280A /* TimeTableScoreViewController.xib */,
 				1680E1281F76054B0025A17E /* TimeTableViewController.h */,
 				1680E1291F76054B0025A17E /* TimeTableViewController.m */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		9F5E76261F8D01AA0090280A /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				9F5E76271F8D01AA0090280A /* TimeTableExamTableViewCell.m */,
+				9F5E76281F8D01AA0090280A /* TimeTableDiscoverTableViewCell.xib */,
+				9F5E76291F8D01AA0090280A /* TimeTableDiscoverTableViewCell.m */,
+				9F5E762A1F8D01AA0090280A /* TimeTableScoreTableViewCell.xib */,
+				9F5E762B1F8D01AA0090280A /* TimeTableExamTableViewCell.xib */,
+				9F5E762C1F8D01AA0090280A /* TimeTableScoreTableViewCell.h */,
+				9F5E762D1F8D01AA0090280A /* TimeTableExamTableViewCell.h */,
+				9F5E762E1F8D01AA0090280A /* TimeTableDiscoverTableViewCell.h */,
+				9F5E762F1F8D01AA0090280A /* TimeTableScoreTableViewCell.m */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		9F5E76301F8D01AA0090280A /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				9F5E763D1F8D03F80090280A /* SemesterView.h */,
+				9F5E763F1F8D03F90090280A /* SemesterView.m */,
+				9F5E763E1F8D03F80090280A /* TimeTableDetailsView.h */,
+				9F5E76401F8D03F90090280A /* TimeTableDetailsView.m */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 		9FE6DF741F87680C004A1275 /* Model */ = {
@@ -528,6 +599,7 @@
 				TargetAttributes = {
 					16699ECC1F7600CA001C089D = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 9X3F3UD5EQ;
 						ProvisioningStyle = Automatic;
 					};
 					16699EE51F7600CA001C089D = {
@@ -567,10 +639,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F5E76381F8D01AA0090280A /* TimeTableScoreTableViewCell.xib in Resources */,
 				1680E10B1F7602C60025A17E /* Main.storyboard in Resources */,
 				1680E12E1F76054B0025A17E /* MeHeadTableViewCell.xib in Resources */,
 				1680E10A1F7602C60025A17E /* LaunchScreen.storyboard in Resources */,
+				9F5E76391F8D01AA0090280A /* TimeTableExamTableViewCell.xib in Resources */,
+				9F5E764E1F8D04F40090280A /* ExamViewController.xib in Resources */,
 				9FE6DF7E1F88710F004A1275 /* Info.plist in Resources */,
+				9F5E76361F8D01AA0090280A /* TimeTableDiscoverTableViewCell.xib in Resources */,
+				9F5E764C1F8D04F40090280A /* TimeTableScoreViewController.xib in Resources */,
 				1680E1091F7602C60025A17E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -644,16 +721,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F5E76421F8D03F90090280A /* TimeTableDetailsView.m in Sources */,
+				9F5E76371F8D01AA0090280A /* TimeTableDiscoverTableViewCell.m in Sources */,
 				1680E12F1F76054B0025A17E /* MeViewController.m in Sources */,
+				9F5E763A1F8D01AA0090280A /* TimeTableScoreTableViewCell.m in Sources */,
 				1680E12D1F76054B0025A17E /* MeHeadTableViewCell.m in Sources */,
 				1680E0F91F7602C60025A17E /* BaseTableViewController.m in Sources */,
 				1680E12C1F76054B0025A17E /* DiscoverViewController.m in Sources */,
 				1680E1001F7602C60025A17E /* AutoFontButton.m in Sources */,
+				9F5E76351F8D01AA0090280A /* TimeTableExamTableViewCell.m in Sources */,
 				1680E1011F7602C60025A17E /* AutoFontLabel.m in Sources */,
 				1680E1041F7602C60025A17E /* AutoView.m in Sources */,
+				9F5E764B1F8D04F40090280A /* TimeTableScoreViewController.m in Sources */,
 				1680E0FA1F7602C60025A17E /* BaseViewController.m in Sources */,
 				1680E1311F76054B0025A17E /* PublishViewController.m in Sources */,
 				1680E1051F7602C60025A17E /* QConstant.m in Sources */,
+				9F5E764F1F8D04F40090280A /* TimeTableDiscoverViewController.m in Sources */,
 				1680E1301F76054B0025A17E /* MessageViewController.m in Sources */,
 				1680E1321F76054B0025A17E /* TimeTableViewController.m in Sources */,
 				1680E1031F7602C60025A17E /* AutoTextView.m in Sources */,
@@ -661,11 +744,13 @@
 				1680E1071F7602C60025A17E /* MainTabBar.m in Sources */,
 				1680E1021F7602C60025A17E /* AutoTextField.m in Sources */,
 				1680E1081F7602C60025A17E /* MainTabBarViewController.m in Sources */,
+				9F5E76411F8D03F90090280A /* SemesterView.m in Sources */,
 				1680E0F81F7602C60025A17E /* BaseNavigationController.m in Sources */,
 				87F17E07F39351DBD43CF359 /* DiscoverMainCell.m in Sources */,
 				87F175B5A5FC8BBB1C9C8AF1 /* DiscoverMainCellModel.m in Sources */,
 				9FE6DF7D1F88710F004A1275 /* main.m in Sources */,
 				87F17BFEF16695F0E9146A3D /* DiscoverSearchViewController.m in Sources */,
+				9F5E764D1F8D04F40090280A /* ExamViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -821,11 +906,12 @@
 			baseConfigurationReference = B0843801013D7B02061BF530 /* Pods-Class-Box.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9X3F3UD5EQ;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SupportingFiles/app.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/SupportingFiles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "cgy.Class-Box";
+				PRODUCT_BUNDLE_IDENTIFIER = "Wrappers.Class-Box";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -835,11 +921,12 @@
 			baseConfigurationReference = 9502E0FEF356EC309D2DABB4 /* Pods-Class-Box.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9X3F3UD5EQ;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SupportingFiles/app.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/SupportingFiles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "cgy.Class-Box";
+				PRODUCT_BUNDLE_IDENTIFIER = "Wrappers.Class-Box";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
