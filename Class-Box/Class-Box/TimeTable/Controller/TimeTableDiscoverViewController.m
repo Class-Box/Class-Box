@@ -25,10 +25,11 @@ static NSString *const reuseId = @"reuse";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"查询";
-    self.tv_class = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, S_WIDTH, S_HEIGHT - 49)];
+    self.tv_class = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, S_WIDTH, S_HEIGHT)];
     self.tv_class.delegate = self;
     self.tv_class.dataSource = self;
     self.tv_class.rowHeight = 80;
+    self.tv_class.separatorInset = UIEdgeInsetsZero;
     [self.tv_class registerNib:[UINib nibWithNibName:@"TimeTableDiscoverTableViewCell" bundle:nil] forCellReuseIdentifier:reuseId];
     [self.view addSubview:self.tv_class];
     
@@ -54,6 +55,10 @@ static NSString *const reuseId = @"reuse";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TimeTableDiscoverTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseId forIndexPath:indexPath];
     return cell;
+}
+
+- (BOOL)hidesBottomBarWhenPushed {
+    return YES;
 }
 
 @end

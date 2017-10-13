@@ -49,9 +49,9 @@
     self.navigationItem.rightBarButtonItem = searchItem;
     self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = NO;
-    if (SYSTEM_VERSION == 11.0) {
-        self.navigationController.navigationBar.prefersLargeTitles = YES;
-    }
+//    if (SYSTEM_VERSION == 11.0) {
+//        self.navigationController.navigationBar.prefersLargeTitles = YES;
+//    }
 }
 
 - (void)searchBtnClick {

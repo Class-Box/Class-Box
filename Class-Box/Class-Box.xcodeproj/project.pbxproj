@@ -31,8 +31,8 @@
 		1680E1301F76054B0025A17E /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1680E1211F76054B0025A17E /* MessageViewController.m */; };
 		1680E1311F76054B0025A17E /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1680E1251F76054B0025A17E /* PublishViewController.m */; };
 		1680E1321F76054B0025A17E /* TimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1680E1291F76054B0025A17E /* TimeTableViewController.m */; };
+		169945801F906E5700052BAE /* ClassTime.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1699457F1F906E5700052BAE /* ClassTime.plist */; };
 		87F175B5A5FC8BBB1C9C8AF1 /* DiscoverMainCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F17E78B00599A15A771C0A /* DiscoverMainCellModel.m */; };
-		87F17BFEF16695F0E9146A3D /* DiscoverSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F17A4A7C8CC666A2C0D68C /* DiscoverSearchViewController.m */; };
 		87F17E07F39351DBD43CF359 /* DiscoverMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F17CE7E74D07D8E3E75703 /* DiscoverMainCell.m */; };
 		88FE1B435E789726CB608B6E /* libPods-Class-Box.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58D713302AFCD22CA118D239 /* libPods-Class-Box.a */; };
 		9F5E76351F8D01AA0090280A /* TimeTableExamTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E76271F8D01AA0090280A /* TimeTableExamTableViewCell.m */; };
@@ -117,10 +117,9 @@
 		1680E1251F76054B0025A17E /* PublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishViewController.m; sourceTree = "<group>"; };
 		1680E1281F76054B0025A17E /* TimeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTableViewController.h; sourceTree = "<group>"; };
 		1680E1291F76054B0025A17E /* TimeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTableViewController.m; sourceTree = "<group>"; };
+		1699457F1F906E5700052BAE /* ClassTime.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ClassTime.plist; sourceTree = "<group>"; };
 		58D713302AFCD22CA118D239 /* libPods-Class-Box.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Class-Box.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F1783989BD2CF02560D411 /* DiscoverMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverMainCell.h; sourceTree = "<group>"; };
-		87F17A4A7C8CC666A2C0D68C /* DiscoverSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverSearchViewController.m; sourceTree = "<group>"; };
-		87F17C7963A4180514466DA5 /* DiscoverSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverSearchViewController.h; sourceTree = "<group>"; };
 		87F17CE7E74D07D8E3E75703 /* DiscoverMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverMainCell.m; sourceTree = "<group>"; };
 		87F17E78B00599A15A771C0A /* DiscoverMainCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverMainCellModel.m; sourceTree = "<group>"; };
 		87F17F6DCADFC7FAA6412955 /* DiscoverMainCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverMainCellModel.h; sourceTree = "<group>"; };
@@ -370,8 +369,6 @@
 			children = (
 				1680E1141F76054B0025A17E /* DiscoverViewController.h */,
 				1680E1151F76054B0025A17E /* DiscoverViewController.m */,
-				87F17C7963A4180514466DA5 /* DiscoverSearchViewController.h */,
-				87F17A4A7C8CC666A2C0D68C /* DiscoverSearchViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -444,6 +441,7 @@
 				9F5E76261F8D01AA0090280A /* cell */,
 				9F5E76301F8D01AA0090280A /* Component */,
 				1680E1271F76054B0025A17E /* Controller */,
+				1699457F1F906E5700052BAE /* ClassTime.plist */,
 			);
 			path = TimeTable;
 			sourceTree = "<group>";
@@ -642,6 +640,7 @@
 				9F5E76381F8D01AA0090280A /* TimeTableScoreTableViewCell.xib in Resources */,
 				1680E10B1F7602C60025A17E /* Main.storyboard in Resources */,
 				1680E12E1F76054B0025A17E /* MeHeadTableViewCell.xib in Resources */,
+				169945801F906E5700052BAE /* ClassTime.plist in Resources */,
 				1680E10A1F7602C60025A17E /* LaunchScreen.storyboard in Resources */,
 				9F5E76391F8D01AA0090280A /* TimeTableExamTableViewCell.xib in Resources */,
 				9F5E764E1F8D04F40090280A /* ExamViewController.xib in Resources */,
@@ -696,7 +695,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E13845B11025B70BD062987B /* [CP] Copy Pods Resources */ = {
@@ -749,7 +748,6 @@
 				87F17E07F39351DBD43CF359 /* DiscoverMainCell.m in Sources */,
 				87F175B5A5FC8BBB1C9C8AF1 /* DiscoverMainCellModel.m in Sources */,
 				9FE6DF7D1F88710F004A1275 /* main.m in Sources */,
-				87F17BFEF16695F0E9146A3D /* DiscoverSearchViewController.m in Sources */,
 				9F5E764D1F8D04F40090280A /* ExamViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

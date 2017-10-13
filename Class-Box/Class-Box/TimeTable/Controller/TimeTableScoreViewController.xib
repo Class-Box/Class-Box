@@ -50,7 +50,6 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.96852236986160278" green="0.96868795156478882" blue="0.96851199865341187" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="W9H-Qw-Ar7" secondAttribute="trailing" constant="28" id="2W9-bP-FWH"/>
                         <constraint firstAttribute="width" secondItem="uuP-Kw-qvp" secondAttribute="height" multiplier="271:45" id="6tg-O8-h3c"/>
@@ -89,7 +88,6 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.96852236986160278" green="0.96868795156478882" blue="0.96851199865341187" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="Gns-GE-3b7" firstAttribute="leading" secondItem="X0w-57-RGx" secondAttribute="leading" id="1ku-Wn-wGQ"/>
                         <constraint firstItem="GuW-10-8Ln" firstAttribute="leading" secondItem="VYf-RM-sDH" secondAttribute="leading" constant="8" id="FWv-Hw-af3"/>
@@ -128,7 +126,6 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.96852236986160278" green="0.96868795156478882" blue="0.96851199865341187" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="6Xi-Hc-qig" firstAttribute="top" secondItem="dbf-FM-eqk" secondAttribute="bottom" constant="8" id="2oA-Vl-5bD"/>
                         <constraint firstItem="UeO-zS-ZaJ" firstAttribute="leading" secondItem="D4D-8j-a0k" secondAttribute="leading" constant="8" id="LD2-wu-lhL"/>

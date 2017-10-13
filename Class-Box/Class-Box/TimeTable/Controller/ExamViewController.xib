@@ -25,22 +25,34 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                     <subviews>
                         <segmentedControl opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Q7U-cs-ZWa">
-                            <rect key="frame" x="119" y="14" width="137" height="29"/>
+                            <rect key="frame" x="8" y="14" width="359" height="29"/>
                             <segments>
                                 <segment title="考试提醒"/>
                                 <segment title="查成绩"/>
                             </segments>
-                            <color key="tintColor" red="0.062908180059999999" green="0.4919136167" blue="0.78262966869999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.19532519579999999" green="0.76533734799999997" blue="0.80477613209999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="segmentClicked:" destination="-1" eventType="valueChanged" id="JiT-ac-jdh"/>
                             </connections>
                         </segmentedControl>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="czc-8j-FT0">
+                            <rect key="frame" x="0.0" y="55.5" width="375" height="0.5"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="Qgv-3g-36O"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="bottom" secondItem="czc-8j-FT0" secondAttribute="bottom" id="47h-Rc-KUk"/>
                         <constraint firstItem="Q7U-cs-ZWa" firstAttribute="centerX" secondItem="OZT-7N-iN2" secondAttribute="centerX" id="Cm3-gm-WXZ"/>
+                        <constraint firstItem="czc-8j-FT0" firstAttribute="centerX" secondItem="OZT-7N-iN2" secondAttribute="centerX" id="Ltb-Rs-VqV"/>
+                        <constraint firstItem="czc-8j-FT0" firstAttribute="width" secondItem="OZT-7N-iN2" secondAttribute="width" id="RMV-8W-SpH"/>
                         <constraint firstAttribute="width" secondItem="OZT-7N-iN2" secondAttribute="height" multiplier="375:56" id="TDH-Wm-qmA"/>
                         <constraint firstItem="Q7U-cs-ZWa" firstAttribute="centerY" secondItem="OZT-7N-iN2" secondAttribute="centerY" id="UC5-P8-EYB"/>
+                        <constraint firstAttribute="trailing" secondItem="Q7U-cs-ZWa" secondAttribute="trailing" constant="8" id="WHB-K2-eFa"/>
+                        <constraint firstItem="Q7U-cs-ZWa" firstAttribute="leading" secondItem="OZT-7N-iN2" secondAttribute="leading" constant="8" id="dV7-xJ-0vJ"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SSh-qq-4IO">

@@ -64,12 +64,25 @@
         make.size.sizeOffset(CGSizeMake(TRANSLUCENTVIEWWIDTH, SECTIONHEIGHT * (SECTIONNUMBER + 1)));
     }];
     
-    for (NSInteger i = 0; i < SECTIONNUMBER + 1; i++) {
+    NSString *path= [NSBundle.mainBundle pathForResource:@"ClassTime" ofType:@"plist"];
+    NSArray *temp = [NSArray arrayWithContentsOfFile:path];
+    for (NSInteger i = 0; i < SECTIONNUMBER; i++) {
         UIView *view = [UIView new];
         view.frame = CGRectMake(0, (i + 1) * SECTIONHEIGHT, TRANSLUCENTVIEWWIDTH, SECTIONHEIGHT);
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-        label.text = [NSString stringWithFormat:@"%ld",i + 1];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+        label.numberOfLines = 0;
+        label.text = [NSString stringWithFormat:@"%ld \n%@",i + 1,temp[i]];
+        label.font = [UIFont systemFontOfSize:14];
         [view addSubview:label];
+        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.leading.top.mas_equalTo(view);
+        }];
+        
+        CALayer *layer = [CALayer layer];
+        layer.backgroundColor = [UIColor lightGrayColor].CGColor;
+        layer.frame = CGRectMake(0, 0, TRANSLUCENTVIEWWIDTH, 0.5);
+        [view.layer addSublayer:layer];
+        
         [self.effectView.contentView addSubview:view];
     }
     

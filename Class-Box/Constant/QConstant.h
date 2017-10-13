@@ -16,14 +16,14 @@
 //----------------------------------------------常用参数
 ///主色调
 
-//#define MAIN_TONE_COLOR RGB(0x94, 0xc6, 0x15, 1)
+#define MAIN_TONE_COLOR RGB(52, 206, 217, 1)
 
 ///导航栏背景颜色
 
-//#define BAR_TINT_COLOR RGB(0x94, 0xc6, 0x15, 1)
+#define BAR_TINT_COLOR RGB(247, 247, 245, 1)
 
 ///导航栏按钮颜色
-#define BAR_BTN_COLOR ([UIColor whiteColor])
+//#define BAR_BTN_COLOR ([UIColor whiteColor])
 
 ///xib布局的界面宽度(默认ipone7)
 #define XIB_WIDTH 375

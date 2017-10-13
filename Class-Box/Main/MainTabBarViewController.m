@@ -50,6 +50,9 @@
     BaseNavigationController *basevc4 = [[BaseNavigationController alloc] initWithRootViewController:msgvc];
     
     self.viewControllers = @[baseVC1,bassVc2,basevc4,basevc3];
+    
+    [UINavigationBar appearance].tintColor = MAIN_TONE_COLOR;
+    UINavigationBar.appearance.backgroundColor = BAR_TINT_COLOR;
 }
 
 - (void)initTabBarItem:(UITabBarItem *)tabBarItem Title:(NSString*)title SelectedImage:(NSString*)selectedImage UnselectedImage:(NSString*)unselectedImage {

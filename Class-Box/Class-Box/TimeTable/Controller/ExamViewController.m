@@ -36,6 +36,9 @@ static NSString *const reuseId2 = @"examreuse2";
     self.tableView.tableFooterView = UIView.new;
     self.tableView.rowHeight = 80.f;
     self.tableView.separatorInset = UIEdgeInsetsZero;
+    self.tableView.backgroundColor = self.view.backgroundColor;
+    
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -45,6 +48,10 @@ static NSString *const reuseId2 = @"examreuse2";
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.semesterView hideSelectView];
+}
+
+- (BOOL)hidesBottomBarWhenPushed {
+    return YES;
 }
 
 #pragma mark setter and getter
@@ -95,6 +102,8 @@ static NSString *const reuseId2 = @"examreuse2";
     NSString *const reuse = index == 0 ? reuseId : reuseId2;
     TimeTableExamTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    cell.backgroundColor = self.view.backgroundColor;
     return cell;
 }
 

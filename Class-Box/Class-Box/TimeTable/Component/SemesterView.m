@@ -79,6 +79,7 @@
     if (_selectView == nil) {
         _selectView = [[UITableView alloc] initWithFrame:CGRectZero];
         _selectView.tableFooterView = UIView.new;
+        _selectView.separatorInset = UIEdgeInsetsZero;
         _selectView.rowHeight = 25;
         _selectView.tag = 1;
         _selectView.delegate = self;
@@ -96,6 +97,10 @@
         self.selectData = @[temp.copy,@[@1,@2,@3]];
     }
     return _selectView;
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self hideSelectView];
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {

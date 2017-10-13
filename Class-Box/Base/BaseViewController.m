@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view setBackgroundColor:RGB_COLOR(247, 247, 247)];
+    [self.view setBackgroundColor:RGB_COLOR(243, 242, 237)];
 }
 
 @end
