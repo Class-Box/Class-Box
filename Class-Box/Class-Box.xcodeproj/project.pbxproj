@@ -32,28 +32,12 @@
 		1680E1311F76054B0025A17E /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1680E1251F76054B0025A17E /* PublishViewController.m */; };
 		1680E1321F76054B0025A17E /* TimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1680E1291F76054B0025A17E /* TimeTableViewController.m */; };
 		169945801F906E5700052BAE /* ClassTime.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1699457F1F906E5700052BAE /* ClassTime.plist */; };
-<<<<<<< Updated upstream
 		169945861F90978400052BAE /* SchoolLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 169945841F90978400052BAE /* SchoolLoginViewController.m */; };
 		169945871F90978400052BAE /* SchoolLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 169945851F90978400052BAE /* SchoolLoginViewController.xib */; };
 		16D2D06B1F90C4DC001418FF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D2D0691F90C4DC001418FF /* LoginViewController.m */; };
 		16D2D06C1F90C4DC001418FF /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16D2D06A1F90C4DC001418FF /* LoginViewController.xib */; };
-=======
-		87F17086B6FC1962A423B139 /* SnsMsgCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F171FE98731EC0EF6E5AD7 /* SnsMsgCommentCell.m */; };
-		87F170D3023EC25A6AED3F49 /* FscSnsWebFileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F17FF9C9F715A6E02EF77B /* FscSnsWebFileView.m */; };
-		87F170D5B69ABDEB6A274710 /* FscRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F17D9A8BBA975C7726FEE2 /* FscRefreshView.m */; };
-		87F171B0CC3121907158A9F4 /* FscTapImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F172CC5D077CE195BF6498 /* FscTapImageView.m */; };
-		87F174E215A4DE9E5C0EB9CC /* SnsMsgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F1781245C50096D8703167 /* SnsMsgCell.m */; };
-		87F1756D7D478D5C5B2043F9 /* FscBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F17F6EA35C24510DC87E2F /* FscBannerView.xib */; };
->>>>>>> Stashed changes
 		87F175B5A5FC8BBB1C9C8AF1 /* DiscoverMainCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F17E78B00599A15A771C0A /* DiscoverMainCellModel.m */; };
-		87F177B6AC0F84643E9E95A2 /* NetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F17251AD678E7B5CFCB44C /* NetworkTool.m */; };
-		87F17A7E7B09DA1B41D4E196 /* SnsUnReadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F173C5C954AEA65FB00358 /* SnsUnReadCell.m */; };
-		87F17B0AD8D334F218CB0F38 /* SnsMsgPhotoCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F178CBDB33A55193D36E9F /* SnsMsgPhotoCCell.m */; };
-		87F17CBD06175D18243B5BF9 /* FscBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F17EB0E83EF7F358D4AF9D /* FscBannerView.m */; };
-		87F17CE77C4D2EA939DE5E85 /* FscTextInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F172E814287C1BEDA1FC7E /* FscTextInputView.m */; };
-		87F17D6386F7D237D96900C4 /* SnsUnReadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F1750BD5C1574C1A9C1525 /* SnsUnReadCell.xib */; };
 		87F17E07F39351DBD43CF359 /* DiscoverMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F17CE7E74D07D8E3E75703 /* DiscoverMainCell.m */; };
-		87F17F0EE5DE0CA47BD4B31E /* FscTTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F171A51B44E1F20EC50F73 /* FscTTTAttributedLabel.m */; };
 		88FE1B435E789726CB608B6E /* libPods-Class-Box.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58D713302AFCD22CA118D239 /* libPods-Class-Box.a */; };
 		9F5E76351F8D01AA0090280A /* TimeTableExamTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E76271F8D01AA0090280A /* TimeTableExamTableViewCell.m */; };
 		9F5E76361F8D01AA0090280A /* TimeTableDiscoverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F5E76281F8D01AA0090280A /* TimeTableDiscoverTableViewCell.xib */; };
@@ -68,7 +52,6 @@
 		9F5E764D1F8D04F40090280A /* ExamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E76481F8D04F40090280A /* ExamViewController.m */; };
 		9F5E764E1F8D04F40090280A /* ExamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F5E76491F8D04F40090280A /* ExamViewController.xib */; };
 		9F5E764F1F8D04F40090280A /* TimeTableDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E764A1F8D04F40090280A /* TimeTableDiscoverViewController.m */; };
-		9FBB24BA1F919C9D00F90DE0 /* DiscoverSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBB24B91F919C9D00F90DE0 /* DiscoverSearchViewController.m */; };
 		9FE6DF7D1F88710F004A1275 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE6DF7A1F88710F004A1275 /* main.m */; };
 		9FE6DF7E1F88710F004A1275 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FE6DF7C1F88710F004A1275 /* Info.plist */; };
 /* End PBXBuildFile section */
@@ -146,34 +129,10 @@
 		16D2D0691F90C4DC001418FF /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		16D2D06A1F90C4DC001418FF /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		58D713302AFCD22CA118D239 /* libPods-Class-Box.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Class-Box.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		87F1715B2D78418316A37025 /* SnsMsgPhotoCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnsMsgPhotoCCell.h; sourceTree = "<group>"; };
-		87F171A51B44E1F20EC50F73 /* FscTTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FscTTTAttributedLabel.m; sourceTree = "<group>"; };
-		87F171FE98731EC0EF6E5AD7 /* SnsMsgCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnsMsgCommentCell.m; sourceTree = "<group>"; };
-		87F17251AD678E7B5CFCB44C /* NetworkTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkTool.m; sourceTree = "<group>"; };
-		87F172C8706B013D55F6EDD6 /* SnsMsgCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnsMsgCell.h; sourceTree = "<group>"; };
-		87F172CC5D077CE195BF6498 /* FscTapImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FscTapImageView.m; sourceTree = "<group>"; };
-		87F172E814287C1BEDA1FC7E /* FscTextInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FscTextInputView.m; sourceTree = "<group>"; };
-		87F173C5C954AEA65FB00358 /* SnsUnReadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnsUnReadCell.m; sourceTree = "<group>"; };
-		87F173F114625C25EAA9945F /* FscTTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FscTTTAttributedLabel.h; sourceTree = "<group>"; };
-		87F1741A7B1C674D0F177208 /* NetworkTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkTool.h; sourceTree = "<group>"; };
-		87F1750BD5C1574C1A9C1525 /* SnsUnReadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SnsUnReadCell.xib; sourceTree = "<group>"; };
-		87F1772347692DE4826C7971 /* SnsMsgCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnsMsgCommentCell.h; sourceTree = "<group>"; };
-		87F1781245C50096D8703167 /* SnsMsgCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnsMsgCell.m; sourceTree = "<group>"; };
 		87F1783989BD2CF02560D411 /* DiscoverMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverMainCell.h; sourceTree = "<group>"; };
-		87F178CBDB33A55193D36E9F /* SnsMsgPhotoCCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnsMsgPhotoCCell.m; sourceTree = "<group>"; };
-		87F17B4A3030E4F5EDA35232 /* FscSnsWebFileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FscSnsWebFileView.h; sourceTree = "<group>"; };
-		87F17B63D0C3424DF3E03C97 /* SnsUnReadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnsUnReadCell.h; sourceTree = "<group>"; };
-		87F17CBF2068B9DCFA4E0DC9 /* FscBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FscBannerView.h; sourceTree = "<group>"; };
 		87F17CE7E74D07D8E3E75703 /* DiscoverMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverMainCell.m; sourceTree = "<group>"; };
-		87F17D9A8BBA975C7726FEE2 /* FscRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FscRefreshView.m; sourceTree = "<group>"; };
 		87F17E78B00599A15A771C0A /* DiscoverMainCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverMainCellModel.m; sourceTree = "<group>"; };
-		87F17E861269BDE65D97C737 /* FscTextInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FscTextInputView.h; sourceTree = "<group>"; };
-		87F17EB0E83EF7F358D4AF9D /* FscBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FscBannerView.m; sourceTree = "<group>"; };
-		87F17ECA81B6A79C7FD2E688 /* FscTapImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FscTapImageView.h; sourceTree = "<group>"; };
 		87F17F6DCADFC7FAA6412955 /* DiscoverMainCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverMainCellModel.h; sourceTree = "<group>"; };
-		87F17F6EA35C24510DC87E2F /* FscBannerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FscBannerView.xib; sourceTree = "<group>"; };
-		87F17FF2E4A1A2E4FD403F3B /* FscRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FscRefreshView.h; sourceTree = "<group>"; };
-		87F17FF9C9F715A6E02EF77B /* FscSnsWebFileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FscSnsWebFileView.m; sourceTree = "<group>"; };
 		9502E0FEF356EC309D2DABB4 /* Pods-Class-Box.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Class-Box.release.xcconfig"; path = "Pods/Target Support Files/Pods-Class-Box/Pods-Class-Box.release.xcconfig"; sourceTree = "<group>"; };
 		9F5E76271F8D01AA0090280A /* TimeTableExamTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTableExamTableViewCell.m; sourceTree = "<group>"; };
 		9F5E76281F8D01AA0090280A /* TimeTableDiscoverTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeTableDiscoverTableViewCell.xib; sourceTree = "<group>"; };
@@ -196,8 +155,6 @@
 		9F5E76481F8D04F40090280A /* ExamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamViewController.m; sourceTree = "<group>"; };
 		9F5E76491F8D04F40090280A /* ExamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamViewController.xib; sourceTree = "<group>"; };
 		9F5E764A1F8D04F40090280A /* TimeTableDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTableDiscoverViewController.m; sourceTree = "<group>"; };
-		9FBB24B81F919C9D00F90DE0 /* DiscoverSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverSearchViewController.h; sourceTree = "<group>"; };
-		9FBB24B91F919C9D00F90DE0 /* DiscoverSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverSearchViewController.m; sourceTree = "<group>"; };
 		9FE6DF7A1F88710F004A1275 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SupportingFiles/main.m; sourceTree = SOURCE_ROOT; };
 		9FE6DF7B1F88710F004A1275 /* app.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = app.pch; path = SupportingFiles/app.pch; sourceTree = SOURCE_ROOT; };
 		9FE6DF7C1F88710F004A1275 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SupportingFiles/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -299,7 +256,6 @@
 				1680E11E1F76054B0025A17E /* Message */,
 				1680E1221F76054B0025A17E /* Publish */,
 				1680E1261F76054B0025A17E /* TimeTable */,
-				87F175F4C830A12BED7D6847 /* Tools */,
 			);
 			path = "Class-Box";
 			sourceTree = "<group>";
@@ -423,8 +379,6 @@
 		1680E1131F76054B0025A17E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9FBB24B81F919C9D00F90DE0 /* DiscoverSearchViewController.h */,
-				9FBB24B91F919C9D00F90DE0 /* DiscoverSearchViewController.m */,
 				1680E1141F76054B0025A17E /* DiscoverViewController.h */,
 				1680E1151F76054B0025A17E /* DiscoverViewController.m */,
 			);
@@ -463,7 +417,6 @@
 			isa = PBXGroup;
 			children = (
 				1680E11F1F76054B0025A17E /* Controller */,
-				87F17040F1A2CC4708174F5B /* CircleOfFriendsCtrl */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -522,7 +475,6 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-<<<<<<< Updated upstream
 		169945811F90919400052BAE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -541,60 +493,6 @@
 				16D2D06A1F90C4DC001418FF /* LoginViewController.xib */,
 			);
 			path = Login;
-=======
-		87F17040F1A2CC4708174F5B /* CircleOfFriendsCtrl */ = {
-			isa = PBXGroup;
-			children = (
-				87F17E07474B6F2A91E33B0C /* Cell */,
-				87F175D32E38322F3FBF3BF6 /* CustomView */,
-			);
-			path = CircleOfFriendsCtrl;
-			sourceTree = "<group>";
-		};
-		87F175D32E38322F3FBF3BF6 /* CustomView */ = {
-			isa = PBXGroup;
-			children = (
-				87F17CBF2068B9DCFA4E0DC9 /* FscBannerView.h */,
-				87F17EB0E83EF7F358D4AF9D /* FscBannerView.m */,
-				87F17FF2E4A1A2E4FD403F3B /* FscRefreshView.h */,
-				87F17D9A8BBA975C7726FEE2 /* FscRefreshView.m */,
-				87F17F6EA35C24510DC87E2F /* FscBannerView.xib */,
-				87F17ECA81B6A79C7FD2E688 /* FscTapImageView.h */,
-				87F172CC5D077CE195BF6498 /* FscTapImageView.m */,
-				87F17E861269BDE65D97C737 /* FscTextInputView.h */,
-				87F172E814287C1BEDA1FC7E /* FscTextInputView.m */,
-				87F17B4A3030E4F5EDA35232 /* FscSnsWebFileView.h */,
-				87F17FF9C9F715A6E02EF77B /* FscSnsWebFileView.m */,
-				87F173F114625C25EAA9945F /* FscTTTAttributedLabel.h */,
-				87F171A51B44E1F20EC50F73 /* FscTTTAttributedLabel.m */,
-			);
-			path = CustomView;
-			sourceTree = "<group>";
-		};
-		87F175F4C830A12BED7D6847 /* Tools */ = {
-			isa = PBXGroup;
-			children = (
-				87F1741A7B1C674D0F177208 /* NetworkTool.h */,
-				87F17251AD678E7B5CFCB44C /* NetworkTool.m */,
-			);
-			path = Tools;
-			sourceTree = "<group>";
-		};
-		87F17E07474B6F2A91E33B0C /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				87F172C8706B013D55F6EDD6 /* SnsMsgCell.h */,
-				87F1781245C50096D8703167 /* SnsMsgCell.m */,
-				87F17B63D0C3424DF3E03C97 /* SnsUnReadCell.h */,
-				87F173C5C954AEA65FB00358 /* SnsUnReadCell.m */,
-				87F1750BD5C1574C1A9C1525 /* SnsUnReadCell.xib */,
-				87F1715B2D78418316A37025 /* SnsMsgPhotoCCell.h */,
-				87F178CBDB33A55193D36E9F /* SnsMsgPhotoCCell.m */,
-				87F1772347692DE4826C7971 /* SnsMsgCommentCell.h */,
-				87F171FE98731EC0EF6E5AD7 /* SnsMsgCommentCell.m */,
-			);
-			path = Cell;
->>>>>>> Stashed changes
 			sourceTree = "<group>";
 		};
 		9F5E76261F8D01AA0090280A /* cell */ = {
@@ -784,8 +682,6 @@
 				9F5E764C1F8D04F40090280A /* TimeTableScoreViewController.xib in Resources */,
 				169945871F90978400052BAE /* SchoolLoginViewController.xib in Resources */,
 				1680E1091F7602C60025A17E /* Assets.xcassets in Resources */,
-				87F17D6386F7D237D96900C4 /* SnsUnReadCell.xib in Resources */,
-				87F1756D7D478D5C5B2043F9 /* FscBannerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -833,7 +729,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E13845B11025B70BD062987B /* [CP] Copy Pods Resources */ = {
@@ -866,7 +762,6 @@
 				1680E0F91F7602C60025A17E /* BaseTableViewController.m in Sources */,
 				169945861F90978400052BAE /* SchoolLoginViewController.m in Sources */,
 				1680E12C1F76054B0025A17E /* DiscoverViewController.m in Sources */,
-				9FBB24BA1F919C9D00F90DE0 /* DiscoverSearchViewController.m in Sources */,
 				1680E1001F7602C60025A17E /* AutoFontButton.m in Sources */,
 				9F5E76351F8D01AA0090280A /* TimeTableExamTableViewCell.m in Sources */,
 				1680E1011F7602C60025A17E /* AutoFontLabel.m in Sources */,
@@ -889,21 +784,7 @@
 				87F175B5A5FC8BBB1C9C8AF1 /* DiscoverMainCellModel.m in Sources */,
 				9FE6DF7D1F88710F004A1275 /* main.m in Sources */,
 				9F5E764D1F8D04F40090280A /* ExamViewController.m in Sources */,
-<<<<<<< Updated upstream
 				16D2D06B1F90C4DC001418FF /* LoginViewController.m in Sources */,
-=======
-				87F177B6AC0F84643E9E95A2 /* NetworkTool.m in Sources */,
-				87F174E215A4DE9E5C0EB9CC /* SnsMsgCell.m in Sources */,
-				87F17A7E7B09DA1B41D4E196 /* SnsUnReadCell.m in Sources */,
-				87F17B0AD8D334F218CB0F38 /* SnsMsgPhotoCCell.m in Sources */,
-				87F17086B6FC1962A423B139 /* SnsMsgCommentCell.m in Sources */,
-				87F17CBD06175D18243B5BF9 /* FscBannerView.m in Sources */,
-				87F170D5B69ABDEB6A274710 /* FscRefreshView.m in Sources */,
-				87F171B0CC3121907158A9F4 /* FscTapImageView.m in Sources */,
-				87F17CE77C4D2EA939DE5E85 /* FscTextInputView.m in Sources */,
-				87F170D3023EC25A6AED3F49 /* FscSnsWebFileView.m in Sources */,
-				87F17F0EE5DE0CA47BD4B31E /* FscTTTAttributedLabel.m in Sources */,
->>>>>>> Stashed changes
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
