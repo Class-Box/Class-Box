@@ -21,27 +21,21 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入账号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cnt-8e-6dU">
-                    <rect key="frame" x="0.0" y="138" width="375" height="60"/>
+                    <rect key="frame" x="0.0" y="138" width="375" height="60.5"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OWE-vZ-VTG">
-                    <rect key="frame" x="0.0" y="247" width="375" height="60"/>
+                    <rect key="frame" x="0.0" y="247.5" width="375" height="60"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LtH-80-ru9">
-                    <rect key="frame" x="169.5" y="51" width="37" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tEF-yk-0sA" customClass="AutoFontButton">
-                    <rect key="frame" x="213.5" y="356" width="136" height="34"/>
+                    <rect key="frame" x="213.5" y="356.5" width="136" height="34"/>
                     <color key="backgroundColor" red="0.20400968189999999" green="0.80847042800000002" blue="0.85216289759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <state key="normal" title="注册">
@@ -54,7 +48,7 @@
                     </userDefinedRuntimeAttributes>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="URN-1h-IUn" customClass="AutoFontButton">
-                    <rect key="frame" x="26" y="356" width="136" height="34"/>
+                    <rect key="frame" x="26" y="356.5" width="136" height="34"/>
                     <color key="backgroundColor" red="0.20400968189999999" green="0.80847042800000002" blue="0.85216289759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="URN-1h-IUn" secondAttribute="height" multiplier="4:1" id="eOm-4o-Mof"/>
@@ -69,6 +63,12 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LtH-80-ru9">
+                    <rect key="frame" x="169" y="51" width="37" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.95300132036209106" green="0.94942265748977661" blue="0.92843377590179443" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>

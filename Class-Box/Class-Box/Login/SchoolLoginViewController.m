@@ -7,7 +7,7 @@
 //
 
 #import "SchoolLoginViewController.h"
-#import "MBProgressHUD.h"
+#import "SDWebImageManager.h"
 
 @interface SchoolLoginViewController ()
 
@@ -23,6 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
 }
 
 - (IBAction)back:(UIButton *)sender {
@@ -30,8 +31,7 @@
 }
 
 - (IBAction)btn_import:(UIButton *)sender {
-//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:UIApplication.sharedApplication.keyWindow animated:YES];
-//    hud.label.text = @"正在登录";
+    
 }
 
 
