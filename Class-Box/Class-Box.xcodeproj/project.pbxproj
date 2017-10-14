@@ -32,6 +32,10 @@
 		1680E1311F76054B0025A17E /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1680E1251F76054B0025A17E /* PublishViewController.m */; };
 		1680E1321F76054B0025A17E /* TimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1680E1291F76054B0025A17E /* TimeTableViewController.m */; };
 		169945801F906E5700052BAE /* ClassTime.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1699457F1F906E5700052BAE /* ClassTime.plist */; };
+		169945861F90978400052BAE /* SchoolLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 169945841F90978400052BAE /* SchoolLoginViewController.m */; };
+		169945871F90978400052BAE /* SchoolLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 169945851F90978400052BAE /* SchoolLoginViewController.xib */; };
+		16D2D06B1F90C4DC001418FF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D2D0691F90C4DC001418FF /* LoginViewController.m */; };
+		16D2D06C1F90C4DC001418FF /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16D2D06A1F90C4DC001418FF /* LoginViewController.xib */; };
 		87F175B5A5FC8BBB1C9C8AF1 /* DiscoverMainCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F17E78B00599A15A771C0A /* DiscoverMainCellModel.m */; };
 		87F17E07F39351DBD43CF359 /* DiscoverMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F17CE7E74D07D8E3E75703 /* DiscoverMainCell.m */; };
 		88FE1B435E789726CB608B6E /* libPods-Class-Box.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58D713302AFCD22CA118D239 /* libPods-Class-Box.a */; };
@@ -118,6 +122,12 @@
 		1680E1281F76054B0025A17E /* TimeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTableViewController.h; sourceTree = "<group>"; };
 		1680E1291F76054B0025A17E /* TimeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTableViewController.m; sourceTree = "<group>"; };
 		1699457F1F906E5700052BAE /* ClassTime.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ClassTime.plist; sourceTree = "<group>"; };
+		169945831F90978400052BAE /* SchoolLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolLoginViewController.h; sourceTree = "<group>"; };
+		169945841F90978400052BAE /* SchoolLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolLoginViewController.m; sourceTree = "<group>"; };
+		169945851F90978400052BAE /* SchoolLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolLoginViewController.xib; sourceTree = "<group>"; };
+		16D2D0681F90C4DC001418FF /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		16D2D0691F90C4DC001418FF /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		16D2D06A1F90C4DC001418FF /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		58D713302AFCD22CA118D239 /* libPods-Class-Box.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Class-Box.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F1783989BD2CF02560D411 /* DiscoverMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverMainCell.h; sourceTree = "<group>"; };
 		87F17CE7E74D07D8E3E75703 /* DiscoverMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverMainCell.m; sourceTree = "<group>"; };
@@ -180,6 +190,7 @@
 		16699EC41F7600CA001C089D = {
 			isa = PBXGroup;
 			children = (
+				169945811F90919400052BAE /* Utils */,
 				9FE6DF791F8870E4004A1275 /* SupportingFiles */,
 				1680E0C31F7602C60025A17E /* Base */,
 				1680E0CA1F7602C60025A17E /* Class-Box */,
@@ -239,6 +250,7 @@
 		1680E0CA1F7602C60025A17E /* Class-Box */ = {
 			isa = PBXGroup;
 			children = (
+				169945821F90970500052BAE /* Login */,
 				1680E10E1F76054B0025A17E /* Discover */,
 				1680E1161F76054B0025A17E /* Me */,
 				1680E11E1F76054B0025A17E /* Message */,
@@ -463,6 +475,26 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		169945811F90919400052BAE /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		169945821F90970500052BAE /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				169945831F90978400052BAE /* SchoolLoginViewController.h */,
+				169945841F90978400052BAE /* SchoolLoginViewController.m */,
+				169945851F90978400052BAE /* SchoolLoginViewController.xib */,
+				16D2D0681F90C4DC001418FF /* LoginViewController.h */,
+				16D2D0691F90C4DC001418FF /* LoginViewController.m */,
+				16D2D06A1F90C4DC001418FF /* LoginViewController.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		9F5E76261F8D01AA0090280A /* cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -646,7 +678,9 @@
 				9F5E764E1F8D04F40090280A /* ExamViewController.xib in Resources */,
 				9FE6DF7E1F88710F004A1275 /* Info.plist in Resources */,
 				9F5E76361F8D01AA0090280A /* TimeTableDiscoverTableViewCell.xib in Resources */,
+				16D2D06C1F90C4DC001418FF /* LoginViewController.xib in Resources */,
 				9F5E764C1F8D04F40090280A /* TimeTableScoreViewController.xib in Resources */,
+				169945871F90978400052BAE /* SchoolLoginViewController.xib in Resources */,
 				1680E1091F7602C60025A17E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -726,6 +760,7 @@
 				9F5E763A1F8D01AA0090280A /* TimeTableScoreTableViewCell.m in Sources */,
 				1680E12D1F76054B0025A17E /* MeHeadTableViewCell.m in Sources */,
 				1680E0F91F7602C60025A17E /* BaseTableViewController.m in Sources */,
+				169945861F90978400052BAE /* SchoolLoginViewController.m in Sources */,
 				1680E12C1F76054B0025A17E /* DiscoverViewController.m in Sources */,
 				1680E1001F7602C60025A17E /* AutoFontButton.m in Sources */,
 				9F5E76351F8D01AA0090280A /* TimeTableExamTableViewCell.m in Sources */,
@@ -749,6 +784,7 @@
 				87F175B5A5FC8BBB1C9C8AF1 /* DiscoverMainCellModel.m in Sources */,
 				9FE6DF7D1F88710F004A1275 /* main.m in Sources */,
 				9F5E764D1F8D04F40090280A /* ExamViewController.m in Sources */,
+				16D2D06B1F90C4DC001418FF /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

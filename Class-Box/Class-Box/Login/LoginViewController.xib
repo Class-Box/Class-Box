@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入账号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cnt-8e-6dU">
+                    <rect key="frame" x="0.0" y="138" width="375" height="60"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OWE-vZ-VTG">
+                    <rect key="frame" x="0.0" y="247" width="375" height="60"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LtH-80-ru9">
+                    <rect key="frame" x="169.5" y="51" width="37" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tEF-yk-0sA" customClass="AutoFontButton">
+                    <rect key="frame" x="213.5" y="356" width="136" height="34"/>
+                    <color key="backgroundColor" red="0.20400968189999999" green="0.80847042800000002" blue="0.85216289759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <state key="normal" title="注册">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="URN-1h-IUn" customClass="AutoFontButton">
+                    <rect key="frame" x="26" y="356" width="136" height="34"/>
+                    <color key="backgroundColor" red="0.20400968189999999" green="0.80847042800000002" blue="0.85216289759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="URN-1h-IUn" secondAttribute="height" multiplier="4:1" id="eOm-4o-Mof"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <state key="normal" title="登录">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.95300132036209106" green="0.94942265748977661" blue="0.92843377590179443" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Cnt-8e-6dU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="0AS-Ah-g3I"/>
+                <constraint firstItem="URN-1h-IUn" firstAttribute="top" secondItem="OWE-vZ-VTG" secondAttribute="bottom" constant="49" id="0ad-CK-r9R"/>
+                <constraint firstItem="OWE-vZ-VTG" firstAttribute="centerX" secondItem="Cnt-8e-6dU" secondAttribute="centerX" id="Cyq-QD-Az5"/>
+                <constraint firstItem="URN-1h-IUn" firstAttribute="height" secondItem="tEF-yk-0sA" secondAttribute="height" id="EWy-eU-KUS"/>
+                <constraint firstItem="URN-1h-IUn" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" multiplier="0.5" id="GKw-8N-Z92"/>
+                <constraint firstItem="OWE-vZ-VTG" firstAttribute="height" secondItem="Cnt-8e-6dU" secondAttribute="height" id="HXx-cs-I12"/>
+                <constraint firstItem="OWE-vZ-VTG" firstAttribute="top" secondItem="Cnt-8e-6dU" secondAttribute="bottom" constant="49" id="Ja0-az-tya"/>
+                <constraint firstItem="Cnt-8e-6dU" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="LK4-FY-Lvu"/>
+                <constraint firstItem="URN-1h-IUn" firstAttribute="width" secondItem="tEF-yk-0sA" secondAttribute="width" id="PDJ-kE-4nN"/>
+                <constraint firstItem="OWE-vZ-VTG" firstAttribute="width" secondItem="Cnt-8e-6dU" secondAttribute="width" id="b3t-es-s0m"/>
+                <constraint firstItem="LtH-80-ru9" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="g9u-Io-yBz"/>
+                <constraint firstItem="Cnt-8e-6dU" firstAttribute="top" secondItem="LtH-80-ru9" secondAttribute="bottom" constant="66" id="ghS-SQ-dv8"/>
+                <constraint firstItem="tEF-yk-0sA" firstAttribute="top" secondItem="URN-1h-IUn" secondAttribute="top" id="kNr-SP-KFZ"/>
+                <constraint firstItem="Cnt-8e-6dU" firstAttribute="width" secondItem="Cnt-8e-6dU" secondAttribute="height" multiplier="25:4" id="n1B-5k-rWS"/>
+                <constraint firstItem="tEF-yk-0sA" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" multiplier="1.5" id="rWl-TI-3SX"/>
+                <constraint firstItem="OWE-vZ-VTG" firstAttribute="width" secondItem="OWE-vZ-VTG" secondAttribute="height" multiplier="25:4" id="whg-fU-gqs"/>
+                <constraint firstItem="LtH-80-ru9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="51" id="yiP-Zz-fFi"/>
+            </constraints>
+            <point key="canvasLocation" x="-110" y="4"/>
+        </view>
+    </objects>
+</document>
