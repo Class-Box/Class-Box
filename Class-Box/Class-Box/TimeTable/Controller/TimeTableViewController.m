@@ -11,12 +11,14 @@
 #import "TimeTableDetailsView.h"
 #import "ExamViewController.h"
 #import "TimeTableDiscoverViewController.h"
+#import "SchoolLoginViewController.h"
 
 @interface TimeTableViewController ()
 
 @property(nonatomic) UIScrollView *scrollView;
 @property(nonatomic) UIVisualEffectView *effectView;
 @property(nonatomic) TimeTableDetailsView *detailsView;
+@property(nonatomic) Boolean isFirst;
 
 @end
 
@@ -39,6 +41,15 @@
     
     [self initViews];
     
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if (!_isFirst) {
+        _isFirst = YES;
+        SchoolLoginViewController *svc = [SchoolLoginViewController new];
+        [self presentViewController:svc animated:YES completion:nil];
+    }
 }
 
 #pragma mark mark initView

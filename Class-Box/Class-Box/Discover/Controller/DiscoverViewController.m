@@ -9,8 +9,7 @@
 #import "DiscoverViewController.h"
 #import "DiscoverMainCell.h"
 #import "DiscoverMainCellModel.h"
-
-#import <objc/message.h>
+#import "DiscoverSearchViewController.h"
 
 @interface DiscoverViewController ()
 
@@ -28,6 +27,7 @@
 - (void)setUpView {
     [self setUpNavigationBar];
     [self setUpTableView];
+    [self setRefresh];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -49,13 +49,11 @@
     self.navigationItem.rightBarButtonItem = searchItem;
     self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = NO;
-//    if (SYSTEM_VERSION == 11.0) {
-//        self.navigationController.navigationBar.prefersLargeTitles = YES;
-//    }
 }
 
 - (void)searchBtnClick {
-
+    DiscoverSearchViewController *searchViewController = [[DiscoverSearchViewController alloc] init];
+    [self.navigationController pushViewController:searchViewController animated:YES];
 }
 
 - (void)setUpTableView {
@@ -63,6 +61,20 @@
     self.tableView.estimatedRowHeight = 400;
 }
 
+//设置刷新
+- (void)setRefresh {
+    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+}
+
+//加载最新数据
+- (void)loadNewData {
+    [self.tableView.header endRefreshing];
+}
+
+- (void)loadMoreData {
+    [self.tableView.mj_footer endRefreshing];
+}
 #pragma mark - TableView Delegate DataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 30;
