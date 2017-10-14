@@ -52,6 +52,7 @@
 		9F5E764D1F8D04F40090280A /* ExamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E76481F8D04F40090280A /* ExamViewController.m */; };
 		9F5E764E1F8D04F40090280A /* ExamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F5E76491F8D04F40090280A /* ExamViewController.xib */; };
 		9F5E764F1F8D04F40090280A /* TimeTableDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E764A1F8D04F40090280A /* TimeTableDiscoverViewController.m */; };
+		9FBB24BD1F91AB6D00F90DE0 /* DiscoverSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBB24BC1F91AB6D00F90DE0 /* DiscoverSearchViewController.m */; };
 		9FE6DF7D1F88710F004A1275 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE6DF7A1F88710F004A1275 /* main.m */; };
 		9FE6DF7E1F88710F004A1275 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FE6DF7C1F88710F004A1275 /* Info.plist */; };
 /* End PBXBuildFile section */
@@ -155,6 +156,8 @@
 		9F5E76481F8D04F40090280A /* ExamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamViewController.m; sourceTree = "<group>"; };
 		9F5E76491F8D04F40090280A /* ExamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamViewController.xib; sourceTree = "<group>"; };
 		9F5E764A1F8D04F40090280A /* TimeTableDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTableDiscoverViewController.m; sourceTree = "<group>"; };
+		9FBB24BB1F91AB6D00F90DE0 /* DiscoverSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverSearchViewController.h; sourceTree = "<group>"; };
+		9FBB24BC1F91AB6D00F90DE0 /* DiscoverSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverSearchViewController.m; sourceTree = "<group>"; };
 		9FE6DF7A1F88710F004A1275 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SupportingFiles/main.m; sourceTree = SOURCE_ROOT; };
 		9FE6DF7B1F88710F004A1275 /* app.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = app.pch; path = SupportingFiles/app.pch; sourceTree = SOURCE_ROOT; };
 		9FE6DF7C1F88710F004A1275 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SupportingFiles/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -379,6 +382,8 @@
 		1680E1131F76054B0025A17E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9FBB24BB1F91AB6D00F90DE0 /* DiscoverSearchViewController.h */,
+				9FBB24BC1F91AB6D00F90DE0 /* DiscoverSearchViewController.m */,
 				1680E1141F76054B0025A17E /* DiscoverViewController.h */,
 				1680E1151F76054B0025A17E /* DiscoverViewController.m */,
 			);
@@ -729,7 +734,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E13845B11025B70BD062987B /* [CP] Copy Pods Resources */ = {
@@ -767,6 +772,7 @@
 				1680E1011F7602C60025A17E /* AutoFontLabel.m in Sources */,
 				1680E1041F7602C60025A17E /* AutoView.m in Sources */,
 				9F5E764B1F8D04F40090280A /* TimeTableScoreViewController.m in Sources */,
+				9FBB24BD1F91AB6D00F90DE0 /* DiscoverSearchViewController.m in Sources */,
 				1680E0FA1F7602C60025A17E /* BaseViewController.m in Sources */,
 				1680E1311F76054B0025A17E /* PublishViewController.m in Sources */,
 				1680E1051F7602C60025A17E /* QConstant.m in Sources */,
