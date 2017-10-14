@@ -8,7 +8,6 @@
 
 #import "NetworkTool.h"
 #import "AFNetworking.h"
-#import "SVProgressHUD.h"
 
 @interface NetworkTool ()
 

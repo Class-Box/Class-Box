@@ -20,4 +20,6 @@ pod 'MJRefresh'
 
 pod 'YYCache'
 
+pod 'SVProgressHUD'
+
 end

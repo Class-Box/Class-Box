@@ -15,4 +15,5 @@
 #import "QConstant.h"
 #import <MJRefresh/MJRefresh.h>
 #import <YYCache/YYCache.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 #endif /* app_pch */
