@@ -10,8 +10,10 @@
 #import "DiscoverMainCell.h"
 #import "DiscoverMainCellModel.h"
 #import "DiscoverSearchViewController.h"
+#import "DiscoverCommentController.h"
+#import "DiscoverUserCenterController.h"
 
-@interface DiscoverViewController ()
+@interface DiscoverViewController ()<DiscoverMainCellDelegate>
 
 @end
 
@@ -45,7 +47,7 @@
 }
 
 - (void)setUpNavigationBar {
-    UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchBtnClick)];
+    UIBarButtonItem *searchItem = [[UIBarButtonItem alloc]  initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchBtnClick)];
     self.navigationItem.rightBarButtonItem = searchItem;
     self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = NO;
@@ -63,7 +65,7 @@
 
 //设置刷新
 - (void)setRefresh {
-    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
 }
 
@@ -90,12 +92,25 @@
     model.userName = @"张力明";
     model.content = @"这里是正文Content Hear, 这里是正文Content Hear, 这里是正文Content Hear, 这里是正文Content Hear, 这里是正文Content Hear, 这里是正文Content Hear";
     model.imageArray = @[@"dad", @"dad", @"dad", @"dad", @"dad", @"dad", @"dad", @"dad", @"dad"];
+    model.publishDate = [[NSDate alloc] init];
     [cell setModel:model];
+    cell.delegate = self;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     UIEdgeInsets edg = UIEdgeInsetsMake(0, 0, 0, 0);
     cell.separatorInset = edg;
+}
+
+
+#pragma mark - DiscoverMainCellDelegate
+- (void)commentButtonClick {
+    [self.navigationController pushViewController:[[DiscoverCommentController alloc] init] animated:YES];
+}
+
+- (void)userMsgClick {
+    [self.navigationController pushViewController:[[DiscoverUserCenterController alloc] init] animated:YES];
 }
 @end

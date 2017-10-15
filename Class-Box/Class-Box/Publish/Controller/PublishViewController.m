@@ -11,6 +11,7 @@
 #import "HXPhotoManager.h"
 #import "HXPhotoView.h"
 #import "HXPhotoViewController.h"
+#import "NetworkTool.h"
 
 static const CGFloat kPhotoViewMargin = 12.0;
 
@@ -25,6 +26,7 @@ static const CGFloat kPhotoViewMargin = 12.0;
 
 @implementation PublishViewController{
     UILabel *_placeholderLabel;
+    NSMutableArray <NSData *> *_imageData;
 }
 
 #pragma mark - 懒加载
@@ -59,7 +61,13 @@ static const CGFloat kPhotoViewMargin = 12.0;
 }
 
 - (void)rightBtnClick {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if ([_textView.text isEqualToString:@""] && _imageData.count == 0) {
+        [SVProgressHUD setMinimumDismissTimeInterval:1.0f];
+        [SVProgressHUD showErrorWithStatus:@"请输入内容！"];
+    } else {
+
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (void)setUpView {
@@ -90,12 +98,12 @@ static const CGFloat kPhotoViewMargin = 12.0;
     self.textView.delegate = self;
     [scrollView addSubview:textView];
 
-    HXPhotoView *photoView = [HXPhotoView photoManager:self.manager];
-    photoView.frame = CGRectMake(kPhotoViewMargin, kPhotoViewMargin + 160, width - kPhotoViewMargin * 2, 0);
-    photoView.delegate = self;
-    photoView.backgroundColor = [UIColor whiteColor];
-    [scrollView addSubview:photoView];
-    self.photoView = photoView;
+    _manager = [[HXPhotoManager alloc] init];
+    _photoView = [HXPhotoView photoManager:_manager];
+    _photoView.frame = CGRectMake(kPhotoViewMargin, kPhotoViewMargin + 160, width - kPhotoViewMargin * 2, 0);
+    _photoView.delegate = self;
+    _photoView.backgroundColor = [UIColor whiteColor];
+    [scrollView addSubview:_photoView];
 }
 
 
@@ -127,9 +135,19 @@ static const CGFloat kPhotoViewMargin = 12.0;
     [self.view endEditing:YES];
 }
 
+
 #pragma mark - HXPhotoViewDelegate
 // 代理返回 选择、移动顺序、删除之后的图片以及视频
 - (void)photoViewChangeComplete:(NSArray<HXPhotoModel *> *)allList Photos:(NSArray<HXPhotoModel *> *)photos Videos:(NSArray<HXPhotoModel *> *)videos Original:(BOOL)isOriginal {
+    [photos enumerateObjectsUsingBlock:^(HXPhotoModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+        _imageData = [NSMutableArray array];
+        // 获取imageData - 通过相册获取时有用 / 通过相机拍摄的无效
+        [HXPhotoTools FetchPhotoDataForPHAsset:model.asset completion:^(NSData *imageData, NSDictionary *info) {
+            [_imageData addObject:imageData];
+        }];
 
+        // 如果是通过相机拍摄的照片只有 thumbPhoto、previewPhoto和imageSize 这三个字段有用可以通过 type 这个字段判断是不是通过相机拍摄的
+        if (model.type == HXPhotoModelMediaTypeCameraPhoto);
+    }];
 }
 @end
