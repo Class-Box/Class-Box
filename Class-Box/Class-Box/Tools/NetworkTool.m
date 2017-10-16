@@ -7,7 +7,6 @@
 //
 
 #import "NetworkTool.h"
-#import "AFNetworking.h"
 
 @interface NetworkTool ()
 
@@ -48,53 +47,47 @@ static id _instance;
 /**
  *  加载数据
  */
-- (void)loadDataInfo:(NSString *)URLString
-          parameters:(id)parameters
-             success:(void (^)(id _Nullable responseObject))success
-             failure:(void (^)(NSError *error))failure {
-    
-    [[AFHTTPSessionManager manager] GET:URLString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        // 回调成功之后的block
-        //[SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-        //[SVProgressHUD showSuccessWithStatus:@"获取数据成功"];
+
+- (void)jsonGET:(NSString *)urlString
+     parameters:(id)parameters
+        success:(nullable void (^)(id _Nullable responseObject))success
+        failure:(nullable void (^)(NSError *_Nullable error))failure {
+    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+    session.requestSerializer = [AFJSONRequestSerializer serializer];
+    session.responseSerializer = [AFJSONResponseSerializer serializer];
+    [session GET:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         success(responseObject);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        // 回调失败之后的block
-        //[SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-        //[SVProgressHUD showSuccessWithStatus:@"获取数据失败"];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         failure(error);
     }];
-    
 }
 
-- (void)loadDataInfoPost:(NSString *)URLString
-          parameters:(id)parameters
-             success:(void (^)(id _Nullable responseObject))success
-             failure:(void (^)(NSError *error))failure {
-    [[AFHTTPSessionManager manager] POST:URLString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        // 回调成功之后的block
+- (void)jsonPOST:(NSString *)urlString
+      parameters:(id)parameters
+         success:(nullable void (^)(id _Nullable responseObject))success
+         failure:(nullable void (^)(NSError *_Nullable error))failure {
+    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+    session.requestSerializer = [AFJSONRequestSerializer serializer];
+    session.responseSerializer = [AFJSONResponseSerializer serializer];
+    [session POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         success(responseObject);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        // 回调失败之后的block
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         failure(error);
     }];
-    
 }
 
-
-- (void)loadDataInfoDelete:(NSString *)URLString
-              parameters:(id)parameters
-                 success:(void (^)(id _Nullable responseObject))success
-                 failure:(void (^)(NSError *error))failure {
-    [[AFHTTPSessionManager manager] DELETE:URLString parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        // 回调成功之后的block
+- (void)jsonDELETE:(NSString *)urlString
+        parameters:(id)parameters
+           success:(nullable void (^)(id _Nullable responseObject))success
+           failure:(nullable void (^)(NSError *_Nullable error))failure {
+    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+    session.requestSerializer = [AFJSONRequestSerializer serializer];
+    session.responseSerializer = [AFJSONResponseSerializer serializer];
+    [session DELETE:urlString parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         success(responseObject);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        // 回调失败之后的block
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         failure(error);
     }];
-    
 }
-
 
 @end
