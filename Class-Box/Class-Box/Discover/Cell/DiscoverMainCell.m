@@ -30,6 +30,7 @@
     UIButton *_likeBtn;
     UIButton *_forwardBtn;
     UILabel *_dateLabel;
+    UILabel *_courseLabel;
     int num;
 
     UITapGestureRecognizer *_tap1;
@@ -52,6 +53,7 @@
     _userNameLabel.text = _model.userName;
     _userPortraitImageView.image = _model.portrait;
     _contentLabel.text = _model.content;
+    _courseLabel.text = _model.courseName;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     _dateLabel.text = [formatter stringFromDate:_model.publishDate];
@@ -121,6 +123,20 @@
         make.leading.mas_equalTo(_userPortraitImageView.mas_trailing).offset(15);
         make.trailing.mas_equalTo(self.mas_trailing).offset(-15);
     }];
+
+
+    //课程名称
+    _courseLabel = [[UILabel alloc] init];
+    _courseLabel.text = @"课程名称";
+    _courseLabel.font = [UIFont systemFontOfSize:14];
+    _courseLabel.textColor = [UIColor blackColor];
+    [self addSubview:_courseLabel];
+
+    [_courseLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(_userPortraitImageView.mas_centerY);
+        make.trailing.mas_equalTo(self.mas_trailing).offset(-15);
+    }];
+
 
     //文字内容
     _contentLabel = [[UILabel alloc] init];

@@ -1,75 +1,59 @@
 //
-//  DiscoverViewController.m
-//  ClassBox
+//  DiscoverClassExchangeCtrl.m
+//  Class-Box
 //
-//  Created by sherlock on 2017/9/16.
-//  Copyright © 2017年 sherlock. All rights reserved.
+//  Created by Wrappers Zhang on 2017/10/16.
+//  Copyright © 2017 sherlock. All rights reserved.
 //
 
-#import "DiscoverViewController.h"
+#import <Masonry/View+MASAdditions.h>
+#import "DiscoverClassExchangeCtrl.h"
 #import "DiscoverMainCell.h"
 #import "DiscoverMainCellModel.h"
-#import "DiscoverSearchViewController.h"
 #import "DiscoverCommentController.h"
 #import "DiscoverUserCenterController.h"
-#import "DiscoverClassExchangeCtrl.h"
+#import "DiscoverClassmateCtrl.h"
 
-@interface DiscoverViewController ()<DiscoverMainCellDelegate>
+@interface DiscoverClassExchangeCtrl()<UITableViewDelegate, UITableViewDataSource, DiscoverMainCellDelegate>
 
+@property (nonatomic, strong)UITableView *tableView;
 @end
 
-@implementation DiscoverViewController{
+@implementation DiscoverClassExchangeCtrl {
 
 }
 
 #pragma mark - 生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setTitle:@"班级圈"];
+    [self setUpNavigationBar];
     [self setUpView];
 }
 
-#pragma mark - 初始化
-- (void)setUpView {
-    [self setUpNavigationBar];
-    [self setUpTableView];
-    [self setRefresh];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBar.hidden = NO;
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-}
-
--(void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:nil];
+- (BOOL)hidesBottomBarWhenPushed {
+    return YES;
 }
 
 - (void)setUpNavigationBar {
-    UIBarButtonItem *classItem = [[UIBarButtonItem alloc] initWithTitle:@"班级圈" style:UIBarButtonItemStylePlain target:self action:@selector(classButtonClick)];
-    self.navigationItem.leftBarButtonItem = classItem;
-
-    UIBarButtonItem *searchItem = [[UIBarButtonItem alloc]  initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchBtnClick)];
-    self.navigationItem.rightBarButtonItem = searchItem;
-    self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.translucent = NO;
+    UIBarButtonItem *classmateItem = [[UIBarButtonItem alloc] initWithTitle:@"班级成员" style:UIBarButtonItemStylePlain target:self action:@selector(classmateButtonClick)];
+    self.navigationItem.rightBarButtonItem = classmateItem;
 }
-
-- (void)classButtonClick {
-    [self.navigationController pushViewController:[[DiscoverClassExchangeCtrl alloc] init] animated:YES];
-}
-
-- (void)searchBtnClick {
-    DiscoverSearchViewController *searchViewController = [[DiscoverSearchViewController alloc] init];
-    [self.navigationController pushViewController:searchViewController animated:YES];
-}
-
-- (void)setUpTableView {
+- (void)setUpView{
+    self.tableView = [[UITableView alloc] init];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [self.view addSubview:self.tableView];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.view);
+    }];
     [self.tableView registerClass:[DiscoverMainCell class] forCellReuseIdentifier:@"cell"];
     self.tableView.estimatedRowHeight = 400;
+    [self setRefresh];
+}
+
+- (void)classmateButtonClick {
+    [self.navigationController pushViewController:[[DiscoverClassmateCtrl alloc] init] animated:YES];
 }
 
 //设置刷新
@@ -77,7 +61,6 @@
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
 }
-
 //加载最新数据
 - (void)loadNewData {
     [self.tableView.header endRefreshing];
@@ -86,6 +69,7 @@
 - (void)loadMoreData {
     [self.tableView.mj_footer endRefreshing];
 }
+
 #pragma mark - TableView Delegate DataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 30;
