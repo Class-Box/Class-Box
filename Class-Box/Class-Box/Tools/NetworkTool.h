@@ -13,6 +13,22 @@
 
 + (_Nonnull instancetype)sharedNetworkTool;
 
+- (void)loadDataInfo:(nullable NSString *)URLString
+          parameters:(nullable id)parameters
+             success:(nullable void (^)(id _Nullable responseObject))success
+             failure:(nullable void (^)(NSError *_Nullable error))failure;
+
+- (void)loadDataInfoPost:(nullable NSString *)URLString
+              parameters:(nullable id)parameters
+                 success:(nullable void (^)(id _Nullable responseObject))success
+                 failure:(nullable void (^)(NSError *_Nullable error))failure;
+
+- (void)loadDataInfoDelete:(nullable NSString *)URLString
+                parameters:(nullable id)parameters
+                   success:(nullable void (^)(id _Nullable responseObject))success
+                   failure:(nullable void (^)(NSError *_Nullable error))failure;
+
+
 //发送GET请求, 附带json数据
 - (void)jsonGET:(NSString *)urlString
       parameters:(id)parameters

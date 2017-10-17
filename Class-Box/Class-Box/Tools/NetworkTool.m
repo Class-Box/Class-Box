@@ -48,6 +48,55 @@ static id _instance;
  *  加载数据
  */
 
+- (void)loadDataInfo:(NSString *)URLString
+          parameters:(id)parameters
+             success:(void (^)(id _Nullable responseObject))success
+             failure:(void (^)(NSError *error))failure {
+
+    [[AFHTTPSessionManager manager] GET:URLString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        // 回调成功之后的block
+        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        [SVProgressHUD showSuccessWithStatus:@"获取数据成功"];
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        // 回调失败之后的block
+        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        [SVProgressHUD showSuccessWithStatus:@"获取数据失败"];
+        failure(error);
+    }];
+
+}
+
+- (void)loadDataInfoPost:(NSString *)URLString
+              parameters:(id)parameters
+                 success:(void (^)(id _Nullable responseObject))success
+                 failure:(void (^)(NSError *error))failure {
+    [[AFHTTPSessionManager manager] POST:URLString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        // 回调成功之后的block
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        // 回调失败之后的block
+        failure(error);
+    }];
+
+}
+
+
+- (void)loadDataInfoDelete:(NSString *)URLString
+                parameters:(id)parameters
+                   success:(void (^)(id _Nullable responseObject))success
+                   failure:(void (^)(NSError *error))failure {
+    [[AFHTTPSessionManager manager] DELETE:URLString parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        // 回调成功之后的block
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        // 回调失败之后的block
+        failure(error);
+    }];
+
+}
+
+
 - (void)jsonGET:(NSString *)urlString
      parameters:(id)parameters
         success:(nullable void (^)(id _Nullable responseObject))success
