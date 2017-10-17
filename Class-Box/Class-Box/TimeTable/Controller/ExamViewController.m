@@ -11,11 +11,16 @@
 #import "TimeTableExamTableViewCell.h"
 #import "TimeTableScoreTableViewCell.h"
 #import "SemesterView.h"
+#import "NetworkTool.h"
+
+#define LOADEXAMURL [CRAWLER_URL stringByAppendingString:@"/zf/exam"]
 
 @interface ExamViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) SemesterView *semesterView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentView;
+
+@property (nonatomic) NSArray *data;
 
 @end
 
@@ -38,7 +43,13 @@ static NSString *const reuseId2 = @"examreuse2";
     self.tableView.separatorInset = UIEdgeInsetsZero;
     self.tableView.backgroundColor = self.view.backgroundColor;
     
-    
+    [[NetworkTool sharedNetworkTool] loadDataInfo:LOADEXAMURL parameters:nil success:^(id  _Nullable responseObject) {
+        NSDictionary *data = responseObject;
+        self.data = data[@"exams"];
+        NSLog(@"%@",data.debugDescription);
+    } failure:^(NSError * _Nullable error) {
+//        [Toast showInfo:@"加载考试失败"];
+    }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -90,7 +101,7 @@ static NSString *const reuseId2 = @"examreuse2";
 #pragma mark delegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return 0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

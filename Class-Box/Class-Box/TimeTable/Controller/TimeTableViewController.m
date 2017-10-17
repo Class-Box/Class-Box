@@ -13,6 +13,7 @@
 #import "TimeTableDiscoverViewController.h"
 #import "SchoolLoginViewController.h"
 #import "Timetable.h"
+#import "SemesterView.h"
 
 #import "CommonUtils.h"
 #import "NetworkTool.h"
@@ -25,6 +26,8 @@
 @property(nonatomic) UIScrollView *scrollView;
 @property(nonatomic) UIVisualEffectView *effectView;
 @property(nonatomic) TimeTableDetailsView *detailsView;
+@property(nonatomic) SemesterView *semesterView;
+
 @property(nonatomic) Boolean isFirst;
 
 @property(nonatomic) NSArray *timetableData;
@@ -41,8 +44,8 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"查询课程" style:UIBarButtonItemStylePlain target:self action:@selector(rightBtnClicked)];
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn addTarget:self action:@selector(centerBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-    [btn setTitle:@"第一周" forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(centerBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [btn setTitle:@"本学期" forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     self.navigationItem.titleView = btn;
 
@@ -61,13 +64,27 @@
     }
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if (_isFirst) {
+        self.view.transform = CGAffineTransformIdentity;
+        CGRect frame = self.scrollView.frame;
+        frame.size.height = frame.size.height + 64;
+        self.scrollView.frame = frame;
+    }
+}
+
 #pragma mark mark initView
 
 - (void)initViews {
-    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, S_WIDTH, S_HEIGHT)];
+    self.semesterView = [[SemesterView alloc] initWithFrame:CGRectMake(0, 0, S_WIDTH, 64)];
+    [self.view addSubview:self.semesterView];
+    
+    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, S_WIDTH, S_HEIGHT - 64 -49)];
     self.scrollView.bounces = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.showsHorizontalScrollIndicator = NO;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.scrollView.contentSize = CGSizeMake(SCROLLVIEWWIDTH, SECTIONHEIGHT * (SECTIONNUMBER + 1));
     [self.view addSubview:self.scrollView];
     
@@ -122,9 +139,24 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)centerBtnClicked {
+- (void)centerBtnClicked:(UIButton *)sender {
     //toggle
-
+    if (CGAffineTransformIsIdentity(self.view.transform)) {
+        [UIView animateWithDuration:0.5f animations:^{
+            self.view.transform = CGAffineTransformTranslate(self.view.transform, 0, 64);
+            CGRect frame = self.scrollView.frame;
+            frame.size.height = frame.size.height - 64;
+            self.scrollView.frame = frame;
+        } completion:nil];
+    } else {
+        [UIView animateWithDuration:0.5f animations:^{
+            self.view.transform = CGAffineTransformIdentity;
+            CGRect frame = self.scrollView.frame;
+            frame.size.height = frame.size.height + 64;
+            self.scrollView.frame = frame;
+        } completion:nil];
+    }
+    
 }
 
 #pragma custom function 
@@ -132,7 +164,6 @@
 - (void)loadData {
     [[NetworkTool sharedNetworkTool] loadDataInfo:LOADTIMETABLEURL parameters:nil success:^(id  _Nullable responseObject) {
         NSDictionary *dict = responseObject;
-        NSLog(@"%@",dict.debugDescription);
         
         NSArray *timetableRow = dict.allValues.lastObject;
         //index(i) = row 第几行
@@ -159,7 +190,7 @@
         [self.detailsView reloadData:self.timetableData];
         
     } failure:^(NSError * _Nullable error) {
-        [Toast showInfo:@"加载课表失败"];
+//        [Toast showInfo:@"加载课表失败"];
     }];
 }
 
