@@ -21,6 +21,8 @@
 
 //@property(nonatomic, strong)UIView *lineView;
 
+@property(nonatomic)NSMutableArray <UIButton *>*classButtons;
+
 @property(nonatomic)NSMutableDictionary<NSValue *, UIColor *> *colorMap;
 
 @end
@@ -36,6 +38,7 @@
         [self initViews];
         [self initConstraints];
         self.colorMap = [NSMutableDictionary dictionary];
+        self.classButtons = [NSMutableArray new];
 //        [self createButtonView:nil];
         
         NSDate *date = NSDate.new;
@@ -113,6 +116,8 @@
 }
 
 - (void)reloadData:(NSArray <Timetable *>*)data {
+    [self.classButtons makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
     for (Timetable *model in data) {
         CGPoint place = model.place;
         NSInteger rowspan = model.rowspan;
@@ -140,6 +145,7 @@
             make.height.mas_equalTo(SECTIONHEIGHT * rowspan);
             make.top.mas_equalTo(self.weekdaysView.mas_bottom).offset(SECTIONHEIGHT * (place.x - 1));
         }];
+        [self.classButtons addObject:btn];
     }
     
 }

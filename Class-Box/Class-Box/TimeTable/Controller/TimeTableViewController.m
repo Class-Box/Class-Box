@@ -64,16 +64,6 @@
     }
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    if (_isFirst) {
-        self.view.transform = CGAffineTransformIdentity;
-        CGRect frame = self.scrollView.frame;
-        frame.size.height = frame.size.height + 64;
-        self.scrollView.frame = frame;
-    }
-}
-
 #pragma mark mark initView
 
 - (void)initViews {
@@ -141,22 +131,34 @@
 
 - (void)centerBtnClicked:(UIButton *)sender {
     //toggle
-    if (CGAffineTransformIsIdentity(self.view.transform)) {
-        [UIView animateWithDuration:0.5f animations:^{
-            self.view.transform = CGAffineTransformTranslate(self.view.transform, 0, 64);
-            CGRect frame = self.scrollView.frame;
-            frame.size.height = frame.size.height - 64;
-            self.scrollView.frame = frame;
-        } completion:nil];
+    if (!sender.selected) {
+        [self downAnimation];
+        sender.selected = YES;
     } else {
-        [UIView animateWithDuration:0.5f animations:^{
-            self.view.transform = CGAffineTransformIdentity;
-            CGRect frame = self.scrollView.frame;
-            frame.size.height = frame.size.height + 64;
-            self.scrollView.frame = frame;
-        } completion:nil];
+        [self upAnimation];
+        sender.selected = NO;
     }
     
+}
+
+- (void)downAnimation {
+    [UIView animateWithDuration:0.5f animations:^{
+        self.semesterView.frame = CGRectMake(0, 64, S_WIDTH, 64);
+        CGRect frame = self.scrollView.frame;
+        frame.size.height = frame.size.height - 64;
+        frame.origin.y = frame.origin.y + 64;
+        self.scrollView.frame = frame;
+    } completion:nil];
+}
+
+- (void)upAnimation {
+    [UIView animateWithDuration:0.5f animations:^{
+        self.semesterView.frame = CGRectMake(0, 0, S_WIDTH, 64);
+        CGRect frame = self.scrollView.frame;
+        frame.size.height = frame.size.height + 64;
+        frame.origin.y = frame.origin.y - 64;
+        self.scrollView.frame = frame;
+    } completion:nil];
 }
 
 #pragma custom function 
