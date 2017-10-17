@@ -10,4 +10,6 @@
 
 @interface SchoolLoginViewController : BaseViewController
 
+@property(weak) BaseViewController *vc;
+
 @end

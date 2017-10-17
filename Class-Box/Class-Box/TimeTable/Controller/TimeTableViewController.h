@@ -10,4 +10,6 @@
 
 @interface TimeTableViewController : BaseViewController
 
+- (void)loadData;
+
 @end

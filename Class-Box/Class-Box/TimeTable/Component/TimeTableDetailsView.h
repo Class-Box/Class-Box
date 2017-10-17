@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "Timetable.h"
+
 //行高
 #define SECTIONHEIGHT 55
 #define SECTIONNUMBER 12
@@ -26,5 +28,7 @@
 @interface TimeTableDetailsView : UIView
 
 @property(nonatomic,weak) id<TimeTableDetailsViewDelegate> delegate;
+
+- (void)reloadData:(NSArray <Timetable *>*)data;
 
 @end

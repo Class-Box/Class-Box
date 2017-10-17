@@ -12,6 +12,13 @@
 #import "ExamViewController.h"
 #import "TimeTableDiscoverViewController.h"
 #import "SchoolLoginViewController.h"
+#import "Timetable.h"
+
+#import "CommonUtils.h"
+#import "NetworkTool.h"
+#import "Toast.h"
+
+#define LOADTIMETABLEURL  [CRAWLER_URL stringByAppendingString:@"/zf/timetable"]
 
 @interface TimeTableViewController ()
 
@@ -19,6 +26,8 @@
 @property(nonatomic) UIVisualEffectView *effectView;
 @property(nonatomic) TimeTableDetailsView *detailsView;
 @property(nonatomic) Boolean isFirst;
+
+@property(nonatomic) NSArray *timetableData;
 
 @end
 
@@ -36,18 +45,18 @@
     [btn setTitle:@"第一周" forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     self.navigationItem.titleView = btn;
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-    
+
     [self initViews];
+    self.isFirst = YES;
     
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    if (!_isFirst) {
-        _isFirst = YES;
+    if (_isFirst) {
+        _isFirst = NO;
         SchoolLoginViewController *svc = [SchoolLoginViewController new];
+        svc.vc = self;
         [self presentViewController:svc animated:YES completion:nil];
     }
 }
@@ -116,6 +125,42 @@
 - (void)centerBtnClicked {
     //toggle
 
+}
+
+#pragma custom function 
+
+- (void)loadData {
+    [[NetworkTool sharedNetworkTool] loadDataInfo:LOADTIMETABLEURL parameters:nil success:^(id  _Nullable responseObject) {
+        NSDictionary *dict = responseObject;
+        NSLog(@"%@",dict.debugDescription);
+        
+        NSArray *timetableRow = dict.allValues.lastObject;
+        //index(i) = row 第几行
+//        NSMutableArray *placeUsed = [NSMutableArray new];
+        NSMutableArray *temp = [NSMutableArray new];
+        for (NSInteger j = 1; j < timetableRow.count; j++) {//j为第几节课
+            NSArray *timetableQueue = timetableRow[j];
+            
+            for (NSInteger i = 0; i < timetableQueue.count; i++) {//i + 1 为星期几
+                NSDictionary *data = timetableQueue[i];
+                NSString *text = data[@"text"];
+                NSString *rowspan = data[@"rowspan"];
+                if (![CommonUtils isNull:text]) {
+                    Timetable *timetable = [Timetable new];
+                    timetable.rowspan = rowspan ? rowspan.integerValue : 1;
+                    timetable.content = text;
+                    timetable.place = CGPointMake(j, i);
+                    [temp addObject:timetable];
+                }
+            }
+            
+        }
+        self.timetableData = temp.copy;
+        [self.detailsView reloadData:self.timetableData];
+        
+    } failure:^(NSError * _Nullable error) {
+        [Toast showInfo:@"加载课表失败"];
+    }];
 }
 
 @end
