@@ -21,7 +21,7 @@ static const CGFloat kPhotoViewMargin = 12.0;
 @property (strong, nonatomic) HXPhotoView *photoView;
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) UITextView *textView;
-
+@property (strong, nonatomic)UITextField *courseTextField;
 @end
 
 @implementation PublishViewController{
@@ -98,9 +98,26 @@ static const CGFloat kPhotoViewMargin = 12.0;
     self.textView.delegate = self;
     [scrollView addSubview:textView];
 
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(kPhotoViewMargin, kPhotoViewMargin + 155, S_WIDTH - 2 * kPhotoViewMargin, 1)];
+    lineView.backgroundColor = RGB_COLOR(230, 230, 230);
+    [scrollView addSubview:lineView];
+
+    UILabel *courseTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kPhotoViewMargin, kPhotoViewMargin + 160, S_WIDTH, 30)];
+    courseTitleLabel.text = @"该笔记相关的课程:";
+    courseTitleLabel.font = [UIFont systemFontOfSize:18];
+    [scrollView addSubview:courseTitleLabel];
+
+    _courseTextField = [[UITextField alloc] initWithFrame:CGRectMake(kPhotoViewMargin, kPhotoViewMargin + 200, S_WIDTH - 2 * kPhotoViewMargin, 50)];
+    _courseTextField.placeholder = @"请输入该笔记的课程";
+    _courseTextField.layer.borderWidth = 0.5;
+    _courseTextField.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    _courseTextField.font = [UIFont systemFontOfSize:25];
+    _courseTextField.backgroundColor = RGB_COLOR(230, 230, 230);
+    [scrollView addSubview:_courseTextField];
+
     _manager = [[HXPhotoManager alloc] init];
     _photoView = [HXPhotoView photoManager:_manager];
-    _photoView.frame = CGRectMake(kPhotoViewMargin, kPhotoViewMargin + 160, width - kPhotoViewMargin * 2, 0);
+    _photoView.frame = CGRectMake(kPhotoViewMargin, kPhotoViewMargin + 260, width - kPhotoViewMargin * 2, 0);
     _photoView.delegate = self;
     _photoView.backgroundColor = [UIColor whiteColor];
     [scrollView addSubview:_photoView];
