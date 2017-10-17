@@ -25,5 +25,8 @@
 @property (nonatomic, strong)NSNumber *commentNum;
 //是否点赞
 @property (nonatomic, assign)bool isLike;
-
+//发布时间
+@property (nonatomic, strong)NSDate *publishDate;
+//课程名称
+@property (nonatomic, copy)NSString *courseName;
 @end

@@ -10,8 +10,18 @@
 
 @class DiscoverMainCellModel;
 
+@protocol DiscoverMainCellDelegate<NSObject>
+
+- (void)commentButtonClick;
+
+- (void)userMsgClick;
+@end
+
 @interface DiscoverMainCell : UITableViewCell
+
+@property (nonatomic, weak)id<DiscoverMainCellDelegate> delegate;
 
 - (void)setModel:(DiscoverMainCellModel *)model;
 
+- (void)cancelGestureRecognizer;
 @end
