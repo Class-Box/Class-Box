@@ -9,6 +9,11 @@
 #import "MeViewController.h"
 #import "MeHeadTableViewCell.h"
 #import "Masonry.h"
+#import "MainNoteController.h"
+#import "MainUserMsgController.h"
+#import "SettingController.h"
+#import "UserMsgSetController.h"
+#import "DiscoverUserCenterController.h"
 
 @interface MeViewController ()
 
@@ -22,6 +27,9 @@
     [super viewDidLoad];
     self.tableView.tableFooterView = [self createFooterView];
     self.tableView.separatorInset = UIEdgeInsetsZero;
+
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.translucent = NO;
 }
 
 #pragma mark delegate
@@ -61,7 +69,7 @@
             cell.textLabel.text = @"我的笔记";
             cell.imageView.image = [UIImage imageNamed:@""];
         } else if (row == 1) {
-            cell.textLabel.text = @"关于我们";
+            cell.textLabel.text = @"我的收藏";
             cell.imageView.image = [UIImage imageNamed:@""];
         } else if (row == 2) {
             cell.textLabel.text = @"我的关注";
@@ -85,6 +93,27 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 0) {
+        UserMsgSetController *userMsgSetController = [[UserMsgSetController alloc] init];
+        [self.navigationController pushViewController:userMsgSetController animated:YES];
+    } else if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            DiscoverUserCenterController *userCenterController = [[DiscoverUserCenterController alloc] init];
+            [self.navigationController pushViewController:userCenterController animated:YES];
+        } else if (indexPath.row == 1) {
+            MainNoteController *mainNoteController = [[MainNoteController alloc] initWithTitle:@"我的收藏" noteModelArray:nil];
+            [self.navigationController pushViewController:mainNoteController animated:YES];
+        } else if (indexPath.row == 2) {
+            MainUserMsgController *mainUserMsgController = [[MainUserMsgController alloc] initWithTitle:@"我的关注" userModelArray:nil];
+            [self.navigationController pushViewController:mainUserMsgController animated:YES];
+        } else if (indexPath.row == 3) {
+            MainUserMsgController *mainUserMsgController = [[MainUserMsgController alloc] initWithTitle:@"我的粉丝" userModelArray:nil];
+            [self.navigationController pushViewController:mainUserMsgController animated:YES];
+        }
+    } else if (indexPath.section == 2) {
+        SettingController *settingController = [[SettingController alloc] init];
+        [self.navigationController pushViewController:settingController animated:YES];
+    }
 }
 
 - (UIView *)createFooterView {
