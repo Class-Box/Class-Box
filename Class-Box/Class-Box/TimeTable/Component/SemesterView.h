@@ -13,4 +13,6 @@
 - (void)removeSelectView;
 - (void)hideSelectView;
 
+@property(copy,nonatomic) void(^btnClicked)(NSString *year,NSString *term);
+
 @end

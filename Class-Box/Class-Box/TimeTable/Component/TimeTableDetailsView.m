@@ -117,6 +117,7 @@
 
 - (void)reloadData:(NSArray <Timetable *>*)data {
     [self.classButtons makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self.classButtons removeAllObjects];
     
     for (Timetable *model in data) {
         CGPoint place = model.place;
@@ -136,9 +137,10 @@
         [self addSubview:btn];
         if (rowspan == 2) {
             [btn setTitle:model.content forState:UIControlStateNormal];
-            btn.titleLabel.font = [UIFont systemFontOfSize:10];
+            btn.titleLabel.font = [UIFont systemFontOfSize:8];
             btn.titleLabel.numberOfLines = 0;
             btn.contentEdgeInsets = UIEdgeInsetsMake(0, 8, 0, 8);
+            btn.layer.zPosition = 5;
         }
         [btn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.leading.mas_equalTo( [self.weekdaysView viewWithTag:(NSInteger)(place.y + 1)] );

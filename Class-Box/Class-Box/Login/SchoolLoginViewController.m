@@ -56,7 +56,7 @@
     } success:^(id  _Nullable responseObject) {
         [Toast showInfo:@"登录成功"];
         [self dismissViewControllerAnimated:YES completion:^{
-            [((TimeTableViewController *)self.vc) loadData];
+            [((TimeTableViewController *)self.vc) loadData:nil term:nil];
         }];
     } failure:^(NSError * _Nullable error) {
         [Toast showInfo:@"登录失败,请检查网络是否正常"];

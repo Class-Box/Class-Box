@@ -40,6 +40,7 @@
         self.decideBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.decideBtn setTitle:@"查询" forState:UIControlStateNormal];
         [self.decideBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self.decideBtn addTarget:self action:@selector(buttonClicked) forControlEvents:UIControlEventTouchUpInside];
         
         [self addSubview:self.semesterYear];
         [self addSubview:self.year];
@@ -91,16 +92,12 @@
         NSInteger year = [calendar component:NSCalendarUnitYear fromDate:now];
         NSMutableArray *temp = [[NSMutableArray alloc] init];
         for (NSInteger i = 4; i > 0; i--) {
-            [temp addObject:[NSString stringWithFormat:@"%ld - %ld",year - 1, year]];
+            [temp addObject:[NSString stringWithFormat:@"%ld-%ld",year, year + 1]];
             year -- ;
         }
         self.selectData = @[temp.copy,@[@1,@2,@3]];
     }
     return _selectView;
-}
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self hideSelectView];
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
@@ -162,6 +159,12 @@
 
 - (void)removeSelectView {
     [self.selectView removeFromSuperview];
+}
+
+- (void)buttonClicked {
+    !self.btnClicked ?  :self.btnClicked(self.semesterYear.text,self.semesterTerm.text);
+    self.semesterTerm.text = nil;
+    self.semesterYear.text = nil;
 }
 
 @end

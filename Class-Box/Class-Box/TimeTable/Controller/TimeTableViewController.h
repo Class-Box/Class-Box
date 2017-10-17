@@ -10,6 +10,6 @@
 
 @interface TimeTableViewController : BaseViewController
 
-- (void)loadData;
+- (void)loadData:(NSString *)year term:(NSString *)term;
 
 @end

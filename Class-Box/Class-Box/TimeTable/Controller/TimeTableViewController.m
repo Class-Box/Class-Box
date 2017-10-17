@@ -68,6 +68,11 @@
 
 - (void)initViews {
     self.semesterView = [[SemesterView alloc] initWithFrame:CGRectMake(0, 0, S_WIDTH, 64)];
+    __weak typeof(self) weakself = self;
+    self.semesterView.btnClicked = ^(NSString *year, NSString *term) {
+        [weakself loadData:year term:term];
+    };
+    
     [self.view addSubview:self.semesterView];
     
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, S_WIDTH, S_HEIGHT - 64 -49)];
@@ -163,13 +168,17 @@
 
 #pragma custom function 
 
-- (void)loadData {
-    [[NetworkTool sharedNetworkTool] loadDataInfo:LOADTIMETABLEURL parameters:nil success:^(id  _Nullable responseObject) {
+- (void)loadData:(NSString *)year term:(NSString *)term {
+    NSString *url;
+    if (year && term) {
+        url = [CRAWLER_URL stringByAppendingFormat:@"/zf/timetable?xnd=%@&xqd=%@",year,term];
+    } else {
+        url = LOADTIMETABLEURL;
+    }
+    [[NetworkTool sharedNetworkTool] loadDataInfo:url parameters:nil success:^(id  _Nullable responseObject) {
         NSDictionary *dict = responseObject;
         
         NSArray *timetableRow = dict.allValues.lastObject;
-        //index(i) = row 第几行
-//        NSMutableArray *placeUsed = [NSMutableArray new];
         NSMutableArray *temp = [NSMutableArray new];
         for (NSInteger j = 1; j < timetableRow.count; j++) {//j为第几节课
             NSArray *timetableQueue = timetableRow[j];

@@ -57,10 +57,6 @@ static NSString *const reuseId2 = @"examreuse2";
     [self.semesterView removeSelectView];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self.semesterView hideSelectView];
-}
-
 - (BOOL)hidesBottomBarWhenPushed {
     return YES;
 }
