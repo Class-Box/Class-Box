@@ -10,4 +10,9 @@
 
 @interface Score : NSObject
 
+@property (nonatomic,copy)NSString *name;
+@property (nonatomic,copy)NSString *credit;
+@property (nonatomic,copy)NSString *grade_point;
+@property (nonatomic,copy)NSString *score;
+
 @end
