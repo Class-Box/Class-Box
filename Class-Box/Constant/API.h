@@ -19,6 +19,8 @@
 #define PATCH_USER_SIGN_APT [SEVER_IP stringByAppendingString:@"/api/users"]
 //发布笔记
 #define POST_NOTE [SEVER_IP stringByAppendingString:@""]
+//获取笔记的评论
+#define LIST_NOTE_COMMNENT [SEVER_IP stringByAppendingString:@"/api/comments"]
 //获取关注的笔记
 #define FOLLOWING_NOTE_API [SEVER_IP stringByAppendingString:@"/api/follower"]
 //评论某条笔记

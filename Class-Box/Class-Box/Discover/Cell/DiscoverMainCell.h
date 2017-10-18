@@ -12,7 +12,7 @@
 
 @protocol DiscoverMainCellDelegate<NSObject>
 
-- (void)commentButtonClick;
+- (void)commentButtonClick:(NSNumber *)noteId;
 
 - (void)userMsgClick;
 @end

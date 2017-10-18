@@ -10,4 +10,6 @@
 
 @interface DiscoverCommentController : UITableViewController
 
+- (instancetype)initWithNoteId:(NSNumber *)noteId;
+
 @end

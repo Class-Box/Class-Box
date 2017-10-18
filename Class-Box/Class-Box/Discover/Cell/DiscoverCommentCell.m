@@ -13,6 +13,7 @@
     UIImageView *_userPortraitImageView;
     UILabel *_userNameLabel;
     UILabel *_contentLabel;
+    UILabel *_dateLabel;
 }
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(nullable NSString *)reuseIdentifier {
@@ -48,8 +49,23 @@
     [_userNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(_userPortraitImageView.mas_trailing).offset(15);
         make.trailing.mas_equalTo(self.mas_trailing).offset(-15);
-        make.centerY.mas_equalTo(_userPortraitImageView.mas_centerY);
+        make.top.mas_equalTo(self.mas_top).offset(10);
     }];
+
+    _dateLabel = [[UILabel alloc] init];
+    _dateLabel.font = [UIFont systemFontOfSize:14];
+    _dateLabel.textColor = [UIColor lightGrayColor];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"YYYY-MM-dd hh:mm"];
+    NSString *dateString = [formatter stringFromDate:[NSDate date]];
+    _dateLabel.text = dateString;
+    [self addSubview:_dateLabel];
+    [_dateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_userNameLabel.mas_bottom).offset(10);
+        make.leading.mas_equalTo(_userPortraitImageView.mas_trailing).offset(15);
+        make.trailing.mas_equalTo(self.mas_trailing).offset(-15);
+    }];
+
 
     _contentLabel = [[UILabel alloc] init];
     _contentLabel.numberOfLines = 0;
@@ -59,10 +75,10 @@
     [self addSubview:_contentLabel];
 
     [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(_userNameLabel.mas_bottom).offset(20);
+        make.top.mas_equalTo(_dateLabel.mas_bottom).offset(10);
         make.leading.mas_equalTo(self.mas_leading).offset(15);
         make.trailing.mas_equalTo(self.mas_trailing).offset(-15);
-        make.bottom.mas_equalTo(self.mas_bottom).offset(-20);
+        make.bottom.mas_equalTo(self.mas_bottom).offset(-10);
     }];
 }
 

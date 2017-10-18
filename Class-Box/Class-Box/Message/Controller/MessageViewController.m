@@ -24,7 +24,7 @@
 #pragma mark delegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 2;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -34,16 +34,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
     if (indexPath.row == 0) {
-        cell.textLabel.text = @"班级圈";
+        cell.textLabel.text = @"收到的评论";
         cell.imageView.image = [UIImage imageNamed:@""];
     } else if (indexPath.row == 1) {
-        cell.textLabel.text = @"我的评论";
-        cell.imageView.image = [UIImage imageNamed:@""];
-    } else if (indexPath.row == 2) {
-        cell.textLabel.text = @"我的赞";
-        cell.imageView.image = [UIImage imageNamed:@""];
-    } else if (indexPath.row == 3) {
-        cell.textLabel.text = @"我的转发";
+        cell.textLabel.text = @"收到的赞";
         cell.imageView.image = [UIImage imageNamed:@""];
     }
     return cell;

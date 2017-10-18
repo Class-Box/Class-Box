@@ -11,15 +11,19 @@
 @interface NoteModel : NSObject<NSCoding>
 
 //笔记ID
-@property (nonatomic, strong)NSNumber *noteId;
+@property (nonatomic, strong)NSNumber *id;
 //笔记内容
 @property (nonatomic, copy)NSString *content;
 //笔记图片
 @property (nonatomic, copy)NSArray <NSString *> *imgs;
 //发布者ID
-@property (nonatomic, strong)NSNumber *userId;
-//班级ID
-@property (nonatomic, strong)NSNumber *classId;
-//课程ID
-@property (nonatomic, strong)NSNumber *courseId;
+@property (nonatomic, strong)NSNumber *authorId;
+//发布人昵称
+@property (nonatomic, copy)NSString *author;
+//点赞ID
+@property (nonatomic, strong)NSNumber *likeId;
+//班级名称
+@property (nonatomic, copy)NSString *courseName;
+//创建时间
+@property (nonatomic, copy)NSDate *createdAt;
 @end

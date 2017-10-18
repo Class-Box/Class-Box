@@ -29,4 +29,6 @@
 @property (nonatomic, strong)NSDate *publishDate;
 //课程名称
 @property (nonatomic, copy)NSString *courseName;
+//笔记ID
+@property (nonatomic, strong)NSNumber *noteId;
 @end

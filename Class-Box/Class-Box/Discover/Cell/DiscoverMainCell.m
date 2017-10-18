@@ -10,6 +10,8 @@
 #import "View+MASAdditions.h"
 #import "NSArray+MASAdditions.h"
 #import "DiscoverMainCellModel.h"
+#import "NetworkTool.h"
+#import "UserDefaults.h"
 
 
 #define IMAGE_WIDTH_HEIGHT 105
@@ -230,7 +232,7 @@
 
 - (void)commentButtonClick {
     if (_delegate) {
-        [_delegate commentButtonClick];
+        [_delegate commentButtonClick:self.model.noteId];
     }
 }
 
@@ -250,9 +252,19 @@
     if (_likeBtn.selected) {
         [_likeBtn setImage:[UIImage imageNamed:@"like"] forState:UIControlStateNormal];
         [_likeBtn setSelected:NO];
+        [[NetworkTool sharedNetworkTool] loadDataInfoDelete:[UNLIKE_NOTE_API stringByAppendingFormat:@"/%@/notes/%@/unlike", [UserDefaults getUserId], self.model.noteId] parameters:nil success:^(id responseObject) {
+
+        } failure:^(NSError *error) {
+
+        }];
     } else {
         [_likeBtn setImage:[UIImage imageNamed:@"like_select"] forState:UIControlStateNormal];
         [_likeBtn setSelected:YES];
+        [[NetworkTool sharedNetworkTool] loadDataInfoPost:[LIKE_NOTE_API stringByAppendingFormat:@"/%@/notes/%@/like", [UserDefaults getUserId], self.model.noteId] parameters:nil success:^(id responseObject) {
+
+        } failure:^(NSError *error) {
+
+        }];
     }
 }
 
