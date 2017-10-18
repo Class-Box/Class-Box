@@ -10,13 +10,21 @@
 
 #define USERKEY @"userkey"
 
+
+//用户ID
+#define USER_ID @"USER_ID"
+
 @implementation User
 @end
 
 @implementation UserDefaults
 
 + (User *)getUser {
-    return [self getValue:USERKEY];
+    return (User *)[self getValue:USERKEY];
+}
+
++ (NSNumber *)getUserId {
+    return [[NSUserDefaults standardUserDefaults] valueForKey:USER_ID];
 }
 
 + (void)setUser:(User *)user {
