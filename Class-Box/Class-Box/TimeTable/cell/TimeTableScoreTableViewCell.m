@@ -8,17 +8,21 @@
 
 #import "TimeTableScoreTableViewCell.h"
 
+@interface TimeTableScoreTableViewCell ()
+@property (weak, nonatomic) IBOutlet UILabel *className;
+@property (weak, nonatomic) IBOutlet UILabel *classScore;
+@property (weak, nonatomic) IBOutlet UILabel *classJd;
+@property (weak, nonatomic) IBOutlet UILabel *classXf;
+
+@end
+
 @implementation TimeTableScoreTableViewCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)updateData:(Score *)score {
+    self.className.text = score.name;
+    self.classScore.text = score.score;
+    self.classJd.text = score.grade_point;
+    self.classXf.text = score.credot;
 }
 
 @end

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Exam.h"
 @interface TimeTableExamTableViewCell : UITableViewCell
+
+- (void)updateData:(Exam *)exam;
 
 @end

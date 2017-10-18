@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Score.h"
 
 @interface TimeTableScoreTableViewCell : UITableViewCell
+
+- (void)updateData:(Score *)score;
 
 @end

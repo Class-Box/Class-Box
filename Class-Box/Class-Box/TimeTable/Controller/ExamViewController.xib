@@ -58,9 +58,6 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SSh-qq-4IO">
                     <rect key="frame" x="0.0" y="56" width="375" height="611"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="SSh-qq-4IO" secondAttribute="height" multiplier="375:611" id="xbz-4Z-0wb"/>
-                    </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="m5g-Vq-adO"/>
                         <outlet property="delegate" destination="-1" id="3Z4-dG-JIg"/>
@@ -69,6 +66,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="SSh-qq-4IO" secondAttribute="bottom" id="31f-88-hf4"/>
                 <constraint firstItem="OZT-7N-iN2" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="S3E-cz-Dwb"/>
                 <constraint firstItem="SSh-qq-4IO" firstAttribute="top" secondItem="OZT-7N-iN2" secondAttribute="bottom" id="kUv-nN-b15"/>
                 <constraint firstItem="OZT-7N-iN2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="qfV-LZ-zeZ"/>

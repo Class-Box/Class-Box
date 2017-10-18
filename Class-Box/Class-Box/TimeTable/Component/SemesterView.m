@@ -163,8 +163,6 @@
 
 - (void)buttonClicked {
     !self.btnClicked ?  :self.btnClicked(self.semesterYear.text,self.semesterTerm.text);
-    self.semesterTerm.text = nil;
-    self.semesterYear.text = nil;
 }
 
 @end

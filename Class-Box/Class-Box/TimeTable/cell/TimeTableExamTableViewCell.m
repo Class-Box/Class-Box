@@ -28,4 +28,11 @@
     // Configure the view for the selected state
 }
 
+- (void)updateData:(Exam *)exam {
+    self.className.text = exam.course_name;
+    self.classTime.text = exam.time;
+    self.classPlace.text = exam.place;
+    self.classSeat.text = exam.seat_number;
+}
+
 @end

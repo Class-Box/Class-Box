@@ -29,6 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.img_qcode.userInteractionEnabled = YES;
     [self.img_qcode addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(getCheckCode)]];
 }
 

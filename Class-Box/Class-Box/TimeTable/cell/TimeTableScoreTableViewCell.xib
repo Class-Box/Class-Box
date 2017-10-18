@@ -87,6 +87,12 @@
                     <constraint firstItem="1rZ-wz-AwA" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" multiplier="1.6" id="mPl-au-YT2"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="classJd" destination="P9Q-QQ-O0m" id="XpJ-1q-fjW"/>
+                <outlet property="className" destination="zdb-5d-pDY" id="jo0-hF-2xv"/>
+                <outlet property="classScore" destination="meD-1Z-rnV" id="QCw-2k-Zq4"/>
+                <outlet property="classXf" destination="yQn-Y0-r2D" id="DsI-ll-FTA"/>
+            </connections>
             <point key="canvasLocation" x="-63" y="17"/>
         </tableViewCell>
     </objects>
