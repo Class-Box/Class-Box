@@ -12,8 +12,10 @@
 #import "ExamViewController.h"
 #import "TimeTableDiscoverViewController.h"
 #import "SchoolLoginViewController.h"
+#import "LoginViewController.h"
 #import "Timetable.h"
 #import "SemesterView.h"
+#import "UserDefaults.h"
 
 #import "CommonUtils.h"
 #import "NetworkTool.h"
@@ -52,10 +54,17 @@
     [self initViews];
     self.isFirst = YES;
     
+    User *user = [UserDefaults getUser];
+    if (!user) {
+        LoginViewController *loginVc = [LoginViewController new];
+        [self.navigationController pushViewController:loginVc animated:YES];
+    }
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
     if (_isFirst) {
         _isFirst = NO;
         SchoolLoginViewController *svc = [SchoolLoginViewController new];

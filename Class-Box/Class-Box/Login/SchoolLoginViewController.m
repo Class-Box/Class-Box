@@ -14,6 +14,9 @@
 #define CAMPUSAUTHENTICATIONURL [CRAWLER_URL stringByAppendingString:@"/zf/off_campus_authentication"]
 #define CHECKCODEURL [CRAWLER_URL stringByAppendingString:@"/zf/check_code"]
 #define LOGINURL [CRAWLER_URL stringByAppendingString:@"/zf/login"]
+#define PERSONINFOURL [CRAWLER_URL stringByAppendingString:@"/zf/personal"]
+
+#define PERSONINFOBINDURL [ASERVER_URL stringByAppendingString:@"/api/bind"]
 
 @interface SchoolLoginViewController ()
 
@@ -37,6 +40,27 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)getPersonInfoAndBind {
+    [[NetworkTool sharedNetworkTool] loadDataInfo:PERSONINFOURL parameters:nil success:^(id  _Nullable responseObject) {
+        NSDictionary *dict = responseObject[@"personal"];
+        NSString *instituteName = dict[@"lbl_xy"];
+        NSString *majorName = dict[@"lbl_zymc"];
+        NSString *className = dict[@"lbl_xzb"];
+        NSString *userId = dict[@"xm"];
+        
+        [[NetworkTool sharedNetworkTool] loadDataInfoPost:PERSONINFOBINDURL parameters:@{@"instituteName" : instituteName , @"majorName" : majorName , @"className" : className , userId : @"userId" , @"schoolName" : @"浙江科技学院"} success:^(id  _Nullable responseObject) {
+            
+            NSDictionary *dict =responseObject;
+            
+        } failure:^(NSError * _Nullable error) {
+            
+        }];
+        
+    } failure:^(NSError * _Nullable error) {
+        
+    }];
+}
+
 - (IBAction)btn_import:(UIButton *)sender {
     NSString *userName = self.tf_account.text;
     NSString *password = self.tf_password.text;
@@ -55,15 +79,19 @@
     [[NetworkTool sharedNetworkTool] loadDataInfoPost:LOGINURL parameters:@{
         @"username": userName,@"password": password,@"check_code": code
     } success:^(id  _Nullable responseObject) {
+        
         [Toast showInfo:@"登录成功"];
         [self dismissViewControllerAnimated:YES completion:^{
             [((TimeTableViewController *)self.vc) loadData:nil term:nil];
+            [self getPersonInfoAndBind];
         }];
+        
     } failure:^(NSError * _Nullable error) {
         [Toast showInfo:@"登录失败,请检查网络是否正常"];
     }];
     
 }
+
 
 - (IBAction)btn_getCode:(id)sender {
     NSString *account = self.tf_account.text;
