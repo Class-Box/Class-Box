@@ -7,6 +7,7 @@
 //
 
 #import "UserDefaults.h"
+#import "MJExtension.h"
 
 #define USERKEY @"userkey"
 
@@ -20,15 +21,16 @@
 @implementation UserDefaults
 
 + (User *)getUser {
-    return (User *)[self getValue:USERKEY];
+    NSString *json = [self getValue:USERKEY];
+    return [User mj_objectWithKeyValues:json];
 }
 
 + (NSNumber *)getUserId {
-    return [[NSUserDefaults standardUserDefaults] valueForKey:USER_ID];
+    return [self getUser].id;
 }
 
 + (void)setUser:(User *)user {
-    [self setValue:user forKey:USERKEY];
+    [self setValue:user.mj_JSONString forKey:USERKEY];
 }
 
 + (void)setValue:(id)value key:(NSString *)key {
