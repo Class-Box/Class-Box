@@ -11,6 +11,7 @@
 @interface User : NSObject
 
 @property (nonatomic)NSNumber *id;
+@property (nonatomic)NSNumber *classId;
 @property (nonatomic)NSString *account;
 @property (nonatomic)NSString *password;
 @property (nonatomic)NSString *name;
@@ -29,4 +30,5 @@
 
 + (NSNumber *)getUserId;
 
++ (NSNumber *)getUserClassId;
 @end

@@ -29,6 +29,10 @@
     return [self getUser].id;
 }
 
++ (NSNumber *)getUserClassId {
+    return [self getUser].classId;
+}
+
 + (void)setUser:(User *)user {
     [self setValue:user.mj_JSONString key:USERKEY];
 }
