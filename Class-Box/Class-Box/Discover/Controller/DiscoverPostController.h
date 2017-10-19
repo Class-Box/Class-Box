@@ -12,4 +12,6 @@
 
 @interface DiscoverPostController : BaseViewController
 
+- (instancetype)initWithNoteId:(NSNumber *)noteId;
+
 @end

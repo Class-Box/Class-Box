@@ -26,4 +26,5 @@
 @property (nonatomic, copy)NSString *courseName;
 //创建时间
 @property (nonatomic, copy)NSDate *createdAt;
+
 @end

@@ -12,4 +12,7 @@
 
 @interface DiscoverClassmateCtrl : BaseViewController
 
+
+- (instancetype)initWithClassId:(NSNumber *)classId;
+
 @end

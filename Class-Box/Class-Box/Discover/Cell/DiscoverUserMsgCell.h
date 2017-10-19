@@ -8,6 +8,10 @@
 
 
 
+@class User;
+
 @interface DiscoverUserMsgCell : UITableViewCell
+
+- (void)setUserModel:(User *)userModel;
 
 @end

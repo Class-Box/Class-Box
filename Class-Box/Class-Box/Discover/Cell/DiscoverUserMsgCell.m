@@ -9,12 +9,16 @@
 #import <Masonry/View+MASAdditions.h>
 #import "DiscoverUserMsgCell.h"
 #import "UserInfoCell.h"
+#import "UserDefaults.h"
+#import "NetworkTool.h"
 
 @implementation DiscoverUserMsgCell {
     UIImageView *_portraitView;
     UILabel *_userNameLabel;
     UILabel *_describeLabel;
     UIButton *_followButton;
+
+    User *_userModel;
 }
 
 
@@ -50,7 +54,7 @@
     }];
 
     _describeLabel = [[UILabel alloc] init];
-    _describeLabel.text = @"其活动啊极大激发了就dada阿里感觉";
+    _describeLabel.text = @"";
     _describeLabel.textColor = [UIColor lightGrayColor];
     _describeLabel.font = [UIFont systemFontOfSize:14];
     [self addSubview:_describeLabel];
@@ -62,6 +66,8 @@
 
     _followButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_followButton setTitle:@"关注" forState:UIControlStateNormal];
+    [_followButton setTitle:@"已关注" forState:UIControlStateSelected];
+    [_followButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
     _followButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [_followButton setTitleColor:HEXCOLOR(0x88e47a) forState:UIControlStateNormal];
     _followButton.layer.borderColor = HEXCOLOR(0x88e47a).CGColor;
@@ -81,18 +87,31 @@
 - (void)followButtonClick:(UIButton *)sender {
     if(!sender.selected) {
         [_followButton setSelected:YES];
-        [_followButton setTitle:@"已关注" forState:UIControlStateNormal];
-        [_followButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _followButton.backgroundColor = HEXCOLOR(0x88e47a);
-        [SVProgressHUD setMinimumDismissTimeInterval:1.0];
-        [SVProgressHUD showSuccessWithStatus:@"关注成功!"];
+        [[NetworkTool sharedNetworkTool] jsonPOST:FOLLOW_API parameters:@{
+                @"from_id" : [UserDefaults getUserId],
+                @"to_id" : @""
+        } success:^(id responseObject) {
+
+        } failure:^(NSError *error) {
+
+        }];
     } else {
         [_followButton setSelected:NO];
-        [_followButton setTitle:@"关注" forState:UIControlStateNormal];
-        [_followButton setTitleColor:HEXCOLOR(0x88e47a) forState:UIControlStateNormal];
         _followButton.backgroundColor = [UIColor whiteColor];
-        [SVProgressHUD setMinimumDismissTimeInterval:1.0];
-        [SVProgressHUD showSuccessWithStatus:@"取消关注成功!"];
+        
+    }
+}
+
+- (void)setUserModel:(User *)userModel {
+    if (userModel) {
+        _userModel = userModel;
+        _userNameLabel.text = userModel.username ? userModel.username : @"";
+        _describeLabel.text = userModel.des ? userModel.des : @"";
+        if (_userModel.followId) {
+            [_followButton setSelected:YES];
+            _followButton.backgroundColor = HEXCOLOR(0x88e47a);
+        }
     }
 }
 @end

@@ -9,20 +9,44 @@
 #import <Masonry/View+MASAdditions.h>
 #import "DiscoverClassmateCtrl.h"
 #import "DiscoverUserMsgCell.h"
+#import "NetworkTool.h"
+#import "UserDefaults.h"
+#import "MJExtension.h"
 
 @interface DiscoverClassmateCtrl()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong)UITableView *tableView;
 
+@property (nonatomic, copy)NSArray <User *> *classmatesArray;
+
 @end
 
-@implementation DiscoverClassmateCtrl
+@implementation DiscoverClassmateCtrl {
+    NSNumber *_classId;
+}
+
+- (instancetype)initWithClassId:(NSNumber *)classId {
+    if (self = [super init]) {
+        _classId = classId;
+    }
+    return self;
+}
+
+#pragma mark - 懒加载
+- (NSArray<User *> *)classmatesArray {
+    if (!_classmatesArray) {
+        _classmatesArray = [NSArray array];
+    }
+    return _classmatesArray;
+}
 
 #pragma mark - 生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavigationBar];
     [self setUpView];
+    [self setUpRefresh];
+    [self.tableView.mj_header beginRefreshing];
 }
 
 
@@ -35,6 +59,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.estimatedRowHeight = 50;
+    self.tableView.tableFooterView = [[UIView alloc] init];
     [self.tableView registerClass:[DiscoverUserMsgCell class] forCellReuseIdentifier:@"userCell"];
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -42,9 +67,31 @@
     }];
 }
 
+- (void)setUpRefresh {
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reloadData)];
+}
+
+- (void)reloadData {
+    [[NetworkTool sharedNetworkTool] loadDataInfo:LIST_CLASSMATE_API parameters:@{@"class_id" : _classId} success:^(id responseObject) {
+        NSArray *userArray = responseObject[@"result"][@"records"];
+        NSMutableArray <User *> *userModelArray = [User mj_objectArrayWithKeyValuesArray:userArray];
+        for (int i = 0; i < userModelArray.count; ++i) {
+            if ([userModelArray[i].id isEqualToNumber:[UserDefaults getUserId]]) {
+                [userModelArray removeObjectAtIndex:i];
+                break;
+            }
+        }
+        self.classmatesArray = userModelArray;
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+
+    }];
+    [self.tableView.mj_header endRefreshing];
+}
+
 #pragma mark - UITableView Delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return self.classmatesArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -52,6 +99,8 @@
     if (!cell) {
         cell = [[DiscoverUserMsgCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"userCell"];
     }
+    User *user = self.classmatesArray[indexPath.row];
+    [cell setUserModel:user];
     return cell;
 }
 @end

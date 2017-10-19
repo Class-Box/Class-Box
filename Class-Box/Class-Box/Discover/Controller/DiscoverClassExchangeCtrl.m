@@ -53,7 +53,8 @@
 }
 
 - (void)classmateButtonClick {
-    [self.navigationController pushViewController:[[DiscoverClassmateCtrl alloc] init] animated:YES];
+    DiscoverClassmateCtrl *classmateCtrl = [[DiscoverClassmateCtrl alloc] initWithClassId:@1];
+    [self.navigationController pushViewController:classmateCtrl animated:YES];
 }
 
 //设置刷新
@@ -63,6 +64,7 @@
 }
 //加载最新数据
 - (void)loadNewData {
+
     [self.tableView.header endRefreshing];
 }
 

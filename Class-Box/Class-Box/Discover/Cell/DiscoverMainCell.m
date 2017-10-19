@@ -67,6 +67,9 @@
             make.height.mas_equalTo(num * (IMAGE_PADDING + IMAGE_WIDTH_HEIGHT) - IMAGE_PADDING);
         }];
     }
+    if (model.isLike) {
+        [_likeBtn setSelected:YES];
+    }
 }
 
 - (void)cancelGestureRecognizer {
@@ -215,6 +218,7 @@
     [_likeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_likeBtn setTitle:@"点赞" forState:UIControlStateNormal];
     [_likeBtn setImage:[UIImage imageNamed:@"like"] forState:UIControlStateNormal];
+    [_likeBtn setImage:[UIImage imageNamed:@"like_select"] forState:UIControlStateSelected];
     [_likeBtn addTarget:self action:@selector(likeButtonClick) forControlEvents:UIControlEventTouchUpInside];
     _likeBtn.titleLabel.font = [UIFont systemFontOfSize:18];
     _likeBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);

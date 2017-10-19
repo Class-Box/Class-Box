@@ -133,6 +133,7 @@
     model.publishDate = noteModel.createdAt;
     model.courseName = noteModel.courseName;
     model.noteId = noteModel.id;
+    model.isLike = noteModel.likeId ? YES : NO;
     [cell setModel:model];
     cell.delegate = self;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
