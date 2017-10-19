@@ -12,9 +12,20 @@
 
 @property (nonatomic)NSNumber *id;
 @property (nonatomic)NSNumber *classId;
-@property (nonatomic)NSString *account;
-@property (nonatomic)NSString *password;
-@property (nonatomic)NSString *name;
+@property (nonatomic, copy)NSString *username;
+@property (nonatomic, copy)NSString *email;
+@property (nonatomic, copy)NSString *tel;
+@property (nonatomic)NSNumber *sex;
+@property (nonatomic, copy)NSString *userDescription;
+@property (nonatomic)NSNumber *majorId;
+@property (nonatomic, copy)NSString *majorName;
+@property (nonatomic)NSNumber *instituteId;
+@property (nonatomic, copy)NSString *instituteName;
+@property (nonatomic)NSNumber *schoolId;
+@property (nonatomic, copy)NSString *schoolName;
+@property (nonatomic, copy)NSString *account;
+@property (nonatomic, copy)NSString *password;
+@property (nonatomic, copy)NSString *name;
 
 @end
 
