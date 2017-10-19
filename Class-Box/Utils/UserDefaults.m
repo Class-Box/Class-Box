@@ -16,6 +16,18 @@
 #define USER_ID @"USER_ID"
 
 @implementation User
++ (NSString *)mj_replacedKeyFromPropertyName121:(NSString *)propertyName {
+    return [propertyName mj_underlineFromCamel];
+}
+
+
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    return @{
+            @"des" : @"description"
+    };
+}
+
+
 @end
 
 @implementation UserDefaults

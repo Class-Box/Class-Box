@@ -16,7 +16,7 @@
 @property (nonatomic, copy)NSString *email;
 @property (nonatomic, copy)NSString *tel;
 @property (nonatomic)NSNumber *sex;
-@property (nonatomic, copy)NSString *userDescription;
+@property (nonatomic, copy)NSString *des;
 @property (nonatomic)NSNumber *majorId;
 @property (nonatomic, copy)NSString *majorName;
 @property (nonatomic)NSNumber *instituteId;
@@ -26,7 +26,7 @@
 @property (nonatomic, copy)NSString *account;
 @property (nonatomic, copy)NSString *password;
 @property (nonatomic, copy)NSString *name;
-
+@property (nonatomic)NSNumber *followId;
 @end
 
 @interface UserDefaults : NSObject
