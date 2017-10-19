@@ -30,7 +30,7 @@
 }
 
 + (void)setUser:(User *)user {
-    [self setValue:user.mj_JSONString forKey:USERKEY];
+    [self setValue:user.mj_JSONString key:USERKEY];
 }
 
 + (void)setValue:(id)value key:(NSString *)key {
