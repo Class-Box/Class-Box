@@ -51,9 +51,12 @@ static NSString *const reuseId2 = @"examreuse2";
     self.tableView.separatorInset = UIEdgeInsetsZero;
     self.tableView.backgroundColor = self.view.backgroundColor;
     
+    [Toast showLoading:UIApplication.sharedApplication.keyWindow Tips:@"正在加载考试"];
     [[NetworkTool sharedNetworkTool] loadDataInfo:LOADEXAMURL parameters:nil success:^(id  _Nullable responseObject) {
         NSDictionary *data = responseObject;
         self.dataExam = data[@"exams"];
+        
+        [Toast dissmiss];
     } failure:^(NSError * _Nullable error) {
 //        [Toast showInfo:@"加载考试失败"];
     }];
@@ -76,6 +79,7 @@ static NSString *const reuseId2 = @"examreuse2";
         
         __weak typeof(self) weakself = self;
         _semesterView.btnClicked = ^(NSString *year, NSString *term) {
+            [Toast showLoading:UIApplication.sharedApplication.keyWindow Tips:@"正在加载"];
             
             NSInteger index = weakself.segmentView.selectedSegmentIndex;
             NSString *URL = index == 0 ? LOADEXAMURLA(year,term) : LOADSCOREURLA(year, term);
@@ -87,6 +91,8 @@ static NSString *const reuseId2 = @"examreuse2";
                 }
                 
                 [weakself.tableView reloadData];
+                
+                [Toast dissmiss];
             } failure:^(NSError * _Nullable error) {
                 
             }];

@@ -169,6 +169,9 @@
 #pragma custom function 
 
 - (void)loadData:(NSString *)year term:(NSString *)term {
+    
+    [Toast showLoading:UIApplication.sharedApplication.keyWindow Tips:@"正在加载课表"];
+    
     NSString *url;
     if (year && term) {
         url = [CRAWLER_URL stringByAppendingFormat:@"/zf/timetable?xnd=%@&xqd=%@",year,term];
@@ -200,6 +203,7 @@
         self.timetableData = temp.copy;
         [self.detailsView reloadData:self.timetableData];
         
+        [Toast dissmiss];
     } failure:^(NSError * _Nullable error) {
 //        [Toast showInfo:@"加载课表失败"];
     }];

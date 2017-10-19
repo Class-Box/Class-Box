@@ -22,7 +22,7 @@
     self.className.text = score.name;
     self.classScore.text = score.score;
     self.classJd.text = score.grade_point;
-    self.classXf.text = score.credot;
+    self.classXf.text = score.credit;
 }
 
 @end
