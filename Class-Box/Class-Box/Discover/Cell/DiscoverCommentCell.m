@@ -56,7 +56,7 @@
     _dateLabel.font = [UIFont systemFontOfSize:14];
     _dateLabel.textColor = [UIColor lightGrayColor];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"YYYY-MM-dd hh:mm"];
+    [formatter setDateFormat:@"YYYY-MM-dd HH:mm"];
     NSString *dateString = [formatter stringFromDate:[NSDate date]];
     _dateLabel.text = dateString;
     [self addSubview:_dateLabel];
@@ -82,16 +82,24 @@
     }];
 }
 
-- (void)setMsgWithUserName:(NSString *)userName image:(UIImage *)userPortrait content:(NSString *)content {
+- (void)setMsgWithUserName:(NSString *)userName image:(UIImage *)userPortrait content:(NSString *)content creatDate:(NSDate *)creatDate{
     if (![userName isEqualToString:@""]) {
         _userNameLabel.text = userName;
     }
     if (userPortrait) {
         _userPortraitImageView.image = userPortrait;
     }
-    if ([content isEqualToString:@""]) {
+    if (![content isEqualToString:@""]) {
         _contentLabel.text = content;
     }
+
+    if (creatDate) {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"YYYY-MM-dd HH:mm"];
+        NSString *dateString = [formatter stringFromDate:creatDate];
+        _dateLabel.text = dateString;
+    }
+
 }
 
 - (void)moveToUser {

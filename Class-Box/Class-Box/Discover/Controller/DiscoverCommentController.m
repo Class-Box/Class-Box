@@ -27,7 +27,7 @@
 
 #pragma mark - 懒加载
 - (NSArray<NoteCommentModel *> *)commentModelArray {
-    if (_commentModelArray) {
+    if (!_commentModelArray) {
         _commentModelArray = [NSArray array];
     }
     return _commentModelArray;
@@ -41,6 +41,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
     [self loadData];
 }
 
@@ -54,13 +58,15 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.estimatedRowHeight = 100;
+    self.tableView.tableFooterView = [[UIView alloc] init];
 }
 
 - (void)loadData {
-    [[NetworkTool sharedNetworkTool] loadDataInfo:LIST_NOTE_COMMNENT  parameters:@{@"note_id" : _noteId} success:^(id responseObject) {
+    [[NetworkTool sharedNetworkTool] loadDataInfo:LIST_NOTE_COMMENT  parameters:@{@"note_id" : _noteId} success:^(id responseObject) {
         NSArray *commentArray = responseObject[@"comments"];
         NSArray <NoteCommentModel * > *noteModelArray = [NoteCommentModel mj_objectArrayWithKeyValuesArray:commentArray];
         self.commentModelArray = noteModelArray;
+        [self.tableView reloadData];
     } failure:^(NSError *error) {
 
     }];
@@ -71,8 +77,8 @@
 }
 
 - (void)pushCommentButtonClick {
-    DiscoverPostController *postController = [[DiscoverPostController alloc] init];
-    [self presentViewController:postController animated:YES completion:nil];
+    DiscoverPostController *postController = [[DiscoverPostController alloc] initWithNoteId:_noteId];
+    [self.navigationController pushViewController:postController animated:YES];
 }
 
 #pragma mark - delegate
@@ -88,7 +94,7 @@
     cell.delegate = self;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     NoteCommentModel *model = self.commentModelArray[indexPath.row];
-    [cell setMsgWithUserName:model.commenter image:nil content:model.content];
+    [cell setMsgWithUserName:model.commenter image:nil content:model.content creatDate:model.createdAt];
     return cell;
 }
 

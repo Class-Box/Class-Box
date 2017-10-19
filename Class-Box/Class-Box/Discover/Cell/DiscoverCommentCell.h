@@ -16,6 +16,6 @@
 
 @property (nonatomic, weak)id<DiscoverCommentCellDelegate> delegate;
 
-- (void)setMsgWithUserName:(NSString *)userName image:(UIImage *)userPortrait content:(NSString *)content;
+- (void)setMsgWithUserName:(NSString *)userName image:(UIImage *)userPortrait content:(NSString *)content creatDate:(NSDate *)creatDate;
 
 @end
