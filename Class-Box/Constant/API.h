@@ -18,9 +18,9 @@
 //修改用户个性签名
 #define PATCH_USER_SIGN_APT [SEVER_IP stringByAppendingString:@"/api/users"]
 //发布笔记
-#define POST_NOTE [SEVER_IP stringByAppendingString:@""]
+#define POST_NOTE_API [SEVER_IP stringByAppendingString:@"/api/comments"]
 //获取笔记的评论
-#define LIST_NOTE_COMMNENT [SEVER_IP stringByAppendingString:@"/api/comments"]
+#define LIST_NOTE_COMMENT [SEVER_IP stringByAppendingString:@"/api/comments"]
 //获取关注的笔记
 #define FOLLOWING_NOTE_API [SEVER_IP stringByAppendingString:@"/api/follower"]
 //评论某条笔记
@@ -36,7 +36,7 @@
 //删除本人已经发送的某条笔记
 #define DELETE_NOTE_API [SEVER_IP stringByAppendingString:@""]
 //获取同班同学的列表
-#define LIST_CLASSMATE_API [SEVER_IP stringByAppendingString:@""]
+#define LIST_CLASSMATE_API  [SEVER_IP stringByAppendingFormat:@"/api/users/%@/classmates", [UserDefaults getUserId]]
 //获取同班同学所发的笔记列表
 #define LIST_CLASSMATE_NOTE_APT [SEVER_IP stringByAppendingString:@""]
 //搜索关于某个课程的笔记
@@ -54,6 +54,11 @@
 //我关注的人
 #define LIST_FOLLOWING_API [SEVER_IP stringByAppendingString:@""]
 //我的粉丝
-#define LIST_FOLLOWER_API [SEVER_IP stringByAppendingString:@""]"
+#define LIST_FOLLOWER_API [SEVER_IP stringByAppendingString:@""]
 
+//关注某人
+#define FOLLOW_API [SEVER_IP stringByAppendingString:@"/api/follows"]
 
+#define UNFOLOW_API [SEVER_IP stringByAppendingString:@"/api/follows"]
+
+#define USER_MSG_API [SEVER_IP stringByAppendingString:@""]
