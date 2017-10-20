@@ -64,6 +64,7 @@
         user.username = account;
         user.password = password;
         user.name = name;
+        user.id = responseObject[user];
         [UserDefaults setUser:user];
         
     } failure:^(NSError * _Nullable error) {
