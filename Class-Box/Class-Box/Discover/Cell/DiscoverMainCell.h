@@ -14,7 +14,7 @@
 
 - (void)commentButtonClick:(NSNumber *)noteId;
 
-- (void)userMsgClick;
+- (void)userMsgClick:(NSNumber *)userId;
 @end
 
 @interface DiscoverMainCell : UITableViewCell

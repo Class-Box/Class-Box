@@ -12,6 +12,7 @@
 #import "HXPhotoView.h"
 #import "HXPhotoViewController.h"
 #import "NetworkTool.h"
+#import "UserDefaults.h"
 
 static const CGFloat kPhotoViewMargin = 12.0;
 
@@ -61,12 +62,23 @@ static const CGFloat kPhotoViewMargin = 12.0;
 }
 
 - (void)rightBtnClick {
-    if ([_textView.text isEqualToString:@""] && _imageData.count == 0) {
+    if ([_textView.text isEqualToString:@""]) {
         [SVProgressHUD setMinimumDismissTimeInterval:1.0f];
         [SVProgressHUD showErrorWithStatus:@"请输入内容！"];
+    } else if ([_courseTextField.text isEqualToString:@""]) {
+        [SVProgressHUD setMinimumDismissTimeInterval:1.0f];
+        [SVProgressHUD showErrorWithStatus:@"请输入课程名称！"];
     } else {
-
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [[NetworkTool sharedNetworkTool] loadDataInfoWithImage:POST_NOTE_API parameters:@{
+                @"user_id" : [UserDefaults getUserId],
+                @"content" : _textView.text,
+                @"course_name" : _courseTextField.text,
+        } imageData:_imageData.firstObject success:^(id responseObject) {
+            NSLog(@"%@", responseObject);
+            [self dismissViewControllerAnimated:YES completion:nil];
+        } failure:^(NSError *error) {
+            NSLog(@"%@", error);
+        }];
     }
 }
 
@@ -116,6 +128,7 @@ static const CGFloat kPhotoViewMargin = 12.0;
     [scrollView addSubview:_courseTextField];
 
     _manager = [[HXPhotoManager alloc] init];
+    _manager.photoMaxNum = 1;
     _photoView = [HXPhotoView photoManager:_manager];
     _photoView.frame = CGRectMake(kPhotoViewMargin, kPhotoViewMargin + 260, width - kPhotoViewMargin * 2, 0);
     _photoView.delegate = self;
@@ -163,8 +176,6 @@ static const CGFloat kPhotoViewMargin = 12.0;
             [_imageData addObject:imageData];
         }];
 
-        // 如果是通过相机拍摄的照片只有 thumbPhoto、previewPhoto和imageSize 这三个字段有用可以通过 type 这个字段判断是不是通过相机拍摄的
-        if (model.type == HXPhotoModelMediaTypeCameraPhoto);
     }];
 }
 @end

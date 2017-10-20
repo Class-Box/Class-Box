@@ -15,7 +15,7 @@
 //笔记内容
 @property (nonatomic, copy)NSString *content;
 //笔记图片
-@property (nonatomic, copy)NSArray <NSString *> *imgs;
+@property (nonatomic, copy)NSString *imgs;
 //发布者ID
 @property (nonatomic, strong)NSNumber *authorId;
 //发布人昵称
@@ -26,5 +26,6 @@
 @property (nonatomic, copy)NSString *courseName;
 //创建时间
 @property (nonatomic, copy)NSDate *createdAt;
-
+//收藏ID
+@property (nonatomic)NSNumber *iscollected;
 @end

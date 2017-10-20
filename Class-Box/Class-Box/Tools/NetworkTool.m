@@ -96,6 +96,27 @@ static id _instance;
 
 }
 
+- (void)loadDataInfoWithImage:(nullable NSString *)URLString parameters:(nullable id)parameters imageData:(NSData *)imageData success:(nullable void (^)(id _Nullable responseObject))success failure:(nullable void (^)(NSError *_Nullable error))failure {
+//    [[AFHTTPSessionManager manager] POST:URLString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        // 回调成功之后的block
+//        success(responseObject);
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        // 回调失败之后的block
+//        failure(error);
+//    }];
+    [[AFHTTPSessionManager manager] POST:URLString parameters:parameters constructingBodyWithBlock:^(id <AFMultipartFormData> formData) {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyyMMddHHmmss";
+        NSString *str = [formatter stringFromDate:[NSDate date]];
+        NSString *fileName = [NSString stringWithFormat:@"%@.png", str];
+        [formData appendPartWithFileData:imageData name:@"file" fileName:fileName mimeType:@"image/png"];
+
+    } progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        failure(error);
+    }];
+}
 
 - (void)jsonGET:(NSString *)urlString
      parameters:(id)parameters
@@ -110,6 +131,7 @@ static id _instance;
         failure(error);
     }];
 }
+
 
 - (void)jsonPOST:(NSString *)urlString
       parameters:(id)parameters

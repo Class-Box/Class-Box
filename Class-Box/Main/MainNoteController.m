@@ -67,7 +67,7 @@
     model.portrait = [UIImage imageNamed:@"People"];
     model.userName = @"张力明";
     model.content = @"这里是正文Content Hear, 这里是正文Content Hear, 这里是正文Content Hear, 这里是正文Content Hear, 这里是正文Content Hear, 这里是正文Content Hear";
-    model.imageArray = @[@"dad", @"dad", @"dad", @"dad", @"dad", @"dad", @"dad", @"dad", @"dad"];
+    //model.imageArray = @[@"dad", @"dad", @"dad", @"dad", @"dad", @"dad", @"dad", @"dad", @"dad"];
     model.publishDate = [[NSDate alloc] init];
     model.courseName = @"Java开发";
     [cell setModel:model];

@@ -8,6 +8,8 @@
 
 #import "UserInfoCell.h"
 #import "View+MASAdditions.h"
+#import "UserDefaults.h"
+#import "NetworkTool.h"
 
 @interface UserInfoCell ()
 
@@ -17,7 +19,9 @@
 
 @end
 
-@implementation UserInfoCell
+@implementation UserInfoCell {
+    User *_userModel;
+}
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -74,19 +78,34 @@
 
 - (void)handleEditAction:(UIButton *)sender {
     if(!sender.selected) {
-        [_editInfoButton setSelected:YES];
-        [_editInfoButton setTitle:@"已关注" forState:UIControlStateNormal];
-        [_editInfoButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _editInfoButton.backgroundColor = HEXCOLOR(0x88e47a);
-        [SVProgressHUD setMinimumDismissTimeInterval:1.0];
-        [SVProgressHUD showSuccessWithStatus:@"关注成功!"];
+
+        [[NetworkTool sharedNetworkTool] jsonPOST:UNFOLLOW_API parameters:@{
+                @"from_id" : [UserDefaults getUserId],
+                @"to_id" : _userModel.id
+        } success:^(id responseObject) {
+            [SVProgressHUD setMinimumDismissTimeInterval:1.0];
+            [SVProgressHUD showSuccessWithStatus:@"关注成功!"];
+            [_editInfoButton setSelected:YES];
+            [_editInfoButton setTitle:@"已关注" forState:UIControlStateNormal];
+            [_editInfoButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            _editInfoButton.backgroundColor = HEXCOLOR(0x88e47a);
+        } failure:^(NSError *error) {
+            [SVProgressHUD setMinimumDismissTimeInterval:1.0];
+            [SVProgressHUD showErrorWithStatus:@"失败"];
+        }];
     } else {
-        [_editInfoButton setSelected:NO];
-        [_editInfoButton setTitle:@"关注" forState:UIControlStateNormal];
-        [_editInfoButton setTitleColor:HEXCOLOR(0x88e47a) forState:UIControlStateNormal];
-        _editInfoButton.backgroundColor = [UIColor whiteColor];
-        [SVProgressHUD setMinimumDismissTimeInterval:1.0];
-        [SVProgressHUD showSuccessWithStatus:@"取消关注成功!"];
+        [[NetworkTool sharedNetworkTool] jsonDELETE:[UNFOLLOW_API stringByAppendingFormat:@"/%@", _userModel.followId] parameters:nil
+                                            success:^(id responseObject) {
+                                                [SVProgressHUD setMinimumDismissTimeInterval:1.0];
+                                                [SVProgressHUD showSuccessWithStatus:@"取关成功"];
+                                                [_editInfoButton setSelected:NO];
+                                                [_editInfoButton setTitle:@"关注" forState:UIControlStateNormal];
+                                                [_editInfoButton setTitleColor:HEXCOLOR(0x88e47a) forState:UIControlStateNormal];
+                                                _editInfoButton.backgroundColor = [UIColor whiteColor];
+                                            } failure:^(NSError *error) {
+                    [SVProgressHUD setMinimumDismissTimeInterval:1.0];
+                    [SVProgressHUD showErrorWithStatus:@"失败"];
+                }];
     }
 }
 
@@ -105,6 +124,21 @@
         make.bottom.mas_equalTo(self.mas_bottom).offset(-20);
         make.size.mas_equalTo(CGSizeMake(100, 30));
     }];
+}
+
+
+- (void)setUserModel:(User *)userModel {
+    _userModel = userModel;
+    _nameLabel.text = userModel.username;
+    _infoLabel.text = userModel.des;
+    if ([userModel.id isEqualToNumber:[UserDefaults getUserId]]) {
+        _editInfoButton.hidden = YES;
+    } else if (userModel.followId) {
+        [_editInfoButton setSelected:YES];
+        [_editInfoButton setTitle:@"已关注" forState:UIControlStateNormal];
+        [_editInfoButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _editInfoButton.backgroundColor = HEXCOLOR(0x88e47a);
+    }
 }
 
 @end

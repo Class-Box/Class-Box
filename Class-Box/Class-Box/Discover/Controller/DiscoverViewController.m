@@ -41,12 +41,14 @@
     [self setUpView];
 }
 
+
+
+
 #pragma mark - 初始化
 - (void)setUpView {
     [self setUpNavigationBar];
     [self setUpTableView];
     [self setRefresh];
-    [self.tableView.mj_header beginRefreshing];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -54,6 +56,7 @@
     self.navigationController.navigationBar.hidden = NO;
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    [self.tableView.mj_header beginRefreshing];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -95,7 +98,10 @@
 
 //加载最新数据
 - (void)loadNewData {
-    [[NetworkTool sharedNetworkTool] loadDataInfo:[FOLLOWING_NOTE_API stringByAppendingFormat:@"/%@/notes", [UserDefaults getUserId] ] parameters:nil success:^(id responseObject) {
+    [[NetworkTool sharedNetworkTool] loadDataInfo:[FOLLOWING_NOTE_API stringByAppendingFormat:@"/%@/notes", [UserDefaults getUserId] ] parameters:@{
+            @"sorter" :@"created_at",
+            @"order" : @"desc"
+    } success:^(id responseObject) {
         NSArray *records = responseObject[@"notes"][@"records"];
         self.noteArray = [NoteModel mj_objectArrayWithKeyValuesArray:records];
         [self.tableView reloadData];
@@ -120,20 +126,21 @@
     if (!cell) {
         cell = [[DiscoverMainCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-
     NoteModel *noteModel = self.noteArray[indexPath.row];
 
     DiscoverMainCellModel *model = [[DiscoverMainCellModel alloc] init];
     model.portrait = [UIImage imageNamed:@"People"];
     model.userName = noteModel.author;
     model.content = noteModel.content;
-    if (noteModel.imgs.count > 0) {
-        model.imageArray = noteModel.imgs;
-    }
     model.publishDate = noteModel.createdAt;
     model.courseName = noteModel.courseName;
     model.noteId = noteModel.id;
-    model.isLike = noteModel.likeId ? YES : NO;
+    model.likeId = noteModel.likeId;
+    model.userId = noteModel.authorId;
+    model.collectId = noteModel.iscollected;
+    if (noteModel.imgs) {
+        model.img = noteModel.imgs;
+    }
     [cell setModel:model];
     cell.delegate = self;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -151,7 +158,8 @@
     [self.navigationController pushViewController:[[DiscoverCommentController alloc] initWithNoteId:noteId] animated:YES];
 }
 
-- (void)userMsgClick {
-    [self.navigationController pushViewController:[[DiscoverUserCenterController alloc] init] animated:YES];
+- (void)userMsgClick:(NSNumber *)userId {
+    DiscoverUserCenterController *userCenterController = [[DiscoverUserCenterController alloc] initWithUserId:userId];
+    [self.navigationController pushViewController:userCenterController animated:YES];
 }
 @end

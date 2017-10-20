@@ -86,20 +86,31 @@
 
 - (void)followButtonClick:(UIButton *)sender {
     if(!sender.selected) {
-        [_followButton setSelected:YES];
         _followButton.backgroundColor = HEXCOLOR(0x88e47a);
         [[NetworkTool sharedNetworkTool] jsonPOST:FOLLOW_API parameters:@{
                 @"from_id" : [UserDefaults getUserId],
-                @"to_id" : @""
+                @"to_id" : _userModel.id
         } success:^(id responseObject) {
-
+            NSNumber *followId = responseObject[@"follow"];
+            _userModel.followId = followId;
+            [_followButton setSelected:YES];
+            [SVProgressHUD setMinimumDismissTimeInterval:1.0];
+            [SVProgressHUD showSuccessWithStatus:@"关注成功"];
         } failure:^(NSError *error) {
-
+            [SVProgressHUD setMinimumDismissTimeInterval:1.0];
+            [SVProgressHUD showErrorWithStatus:@"失败"];
         }];
     } else {
-        [_followButton setSelected:NO];
-        _followButton.backgroundColor = [UIColor whiteColor];
-        
+        [[NetworkTool sharedNetworkTool] jsonDELETE:[UNFOLLOW_API stringByAppendingFormat:@"/%@", _userModel.followId] parameters:nil
+                                                                                                                          success:^(id responseObject) {
+                                                                                                                              [SVProgressHUD setMinimumDismissTimeInterval:1.0];
+                                                                                                                              [SVProgressHUD showSuccessWithStatus:@"取关成功"];
+                                                                                                                              [_followButton setSelected:NO];
+                                                                                                                              _followButton.backgroundColor = [UIColor whiteColor];
+                                                                                                                          } failure:^(NSError *error) {
+                    [SVProgressHUD setMinimumDismissTimeInterval:1.0];
+                    [SVProgressHUD showErrorWithStatus:@"失败"];
+                }];
     }
 }
 

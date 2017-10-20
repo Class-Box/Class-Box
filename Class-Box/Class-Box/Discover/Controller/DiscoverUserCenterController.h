@@ -10,4 +10,6 @@
 
 @interface DiscoverUserCenterController : UIViewController
 
+- (instancetype)initWithUserId:(NSNumber *)userId;
+
 @end

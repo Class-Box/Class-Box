@@ -37,7 +37,7 @@
 }
 
 - (void)completeButtonClick {
-    [[NetworkTool sharedNetworkTool] jsonPOST:POST_NOTE_API parameters:@{
+    [[NetworkTool sharedNetworkTool] jsonPOST:POST_NOTE parameters:@{
             @"user_id" : [UserDefaults getUserId],
             @"note_id" : _noteId,
             @"content" : _commentTextView.text
