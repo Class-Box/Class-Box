@@ -57,6 +57,9 @@
             user.majorId = dict[@"majorId"];
             user.classId = dict[@"classId"];
             user.schoolId = dict[@"schoolId"];
+            user.instituteName = instituteName;
+            user.majorName = majorName;
+            
             [UserDefaults setUser:user];
             
         } failure:^(NSError * _Nullable error) {

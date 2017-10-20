@@ -17,6 +17,7 @@
 #import "DiscoverUserCenterController.h"
 #import "LoginViewController.h"
 #import "TimeTableViewController.h"
+#import "PersonalDetailsViewController.h"
 
 @interface MeViewController ()
 
@@ -41,7 +42,7 @@
     if (section == 0) {
         return 1;
     } else if (section == 1) {
-        return 4;
+        return 5;
     } else if (section == 2) {
         return 1;
     }
@@ -82,6 +83,8 @@
             cell.textLabel.text = @"我的粉丝";
             cell.imageView.image = [UIImage imageNamed:@""];
             cell.detailTextLabel.text = @"10";
+        } else if (row == 4) {
+            cell.textLabel.text = @"个人信息";
         }
         return cell;
     }else if (section == 2) {
@@ -112,6 +115,9 @@
         } else if (indexPath.row == 3) {
             MainUserMsgController *mainUserMsgController = [[MainUserMsgController alloc] initWithTitle:@"我的粉丝" userModelArray:nil];
             [self.navigationController pushViewController:mainUserMsgController animated:YES];
+        } else if (indexPath.row == 4) {
+            PersonalDetailsViewController *pdvc = PersonalDetailsViewController.new;
+            [self.navigationController pushViewController:pdvc animated:YES];
         }
     } else if (indexPath.section == 2) {
         SettingController *settingController = [[SettingController alloc] init];
@@ -141,7 +147,7 @@
     [UserDefaults removeUser];
     LoginViewController *loginVc = [LoginViewController new];
     UINavigationController *nvc = ((UINavigationController *)self.tabBarController.selectedViewController);
-     TimeTableViewController *ttvc = nvc.topViewController;
+    TimeTableViewController *ttvc = nvc.topViewController;
     [self.tabBarController.selectedViewController pushViewController:loginVc animated:YES];
     
     ttvc.needLoad = YES;
