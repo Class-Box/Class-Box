@@ -6,6 +6,7 @@
 //  Copyright © 2017 sherlock. All rights reserved.
 //
 
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "DiscoverMainCell.h"
 #import "View+MASAdditions.h"
 #import "NSArray+MASAdditions.h"
@@ -59,17 +60,23 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     _dateLabel.text = [formatter stringFromDate:_model.publishDate];
-    if (_model.imageArray.count == 0) {
-        num = 0;
-    } else {
-        num = _model.imageArray.count / 3;
+    if (_model.img) {
+        num = 1;
         [_imagesView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(num * (IMAGE_PADDING + IMAGE_WIDTH_HEIGHT) - IMAGE_PADDING);
+            make.height.mas_equalTo(1 * (IMAGE_PADDING + IMAGE_WIDTH_HEIGHT) - IMAGE_PADDING);
+        }];
+    } else {
+        [_imagesView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(0);
         }];
     }
-    if (model.isLike) {
+    if (model.likeId) {
         [_likeBtn setSelected:YES];
     }
+    if (model.collectId) {
+        [_forwardBtn setSelected:YES];
+    }
+    [_imagesView reloadData];
 }
 
 - (void)cancelGestureRecognizer {
@@ -198,6 +205,7 @@
     [_forwardBtn setTitle:@"收藏" forState:UIControlStateNormal];
     [_forwardBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_forwardBtn setImage:[UIImage imageNamed:@"collection"] forState:UIControlStateNormal];
+    [_forwardBtn setImage:[UIImage imageNamed:@"collection_select"] forState:UIControlStateSelected];
     [_forwardBtn addTarget:self action:@selector(forwardButtonClick) forControlEvents:UIControlEventTouchUpInside];
     _forwardBtn.titleLabel.font = [UIFont systemFontOfSize:18];
     _forwardBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
@@ -242,39 +250,59 @@
 
 - (void)forwardButtonClick {
     if (_forwardBtn.selected) {
-        [_forwardBtn setImage:[UIImage imageNamed:@"collection"] forState:UIControlStateNormal];
-        [_forwardBtn setSelected:NO];
+        [[NetworkTool sharedNetworkTool] jsonDELETE:[UNCOLLECTOR_NOTE_API stringByAppendingFormat:@"/%@/notes/%@/uncollect" , [UserDefaults getUserId] ,self.model.noteId] parameters:nil success:^(id responseObject) {
+            [_forwardBtn setSelected:NO];
+            [SVProgressHUD setMinimumDismissTimeInterval:1.0];
+            [SVProgressHUD showSuccessWithStatus:@"成功"];
+        } failure:^(NSError *error) {
+            [SVProgressHUD setMinimumDismissTimeInterval:1.0];
+            [SVProgressHUD showSuccessWithStatus:@"失败"];
+            NSLog(@"%@", error);
+        }];
     } else {
-        [_forwardBtn setImage:[UIImage imageNamed:@"collection_select"] forState:UIControlStateNormal];
-        [_forwardBtn setSelected:YES];
-        [SVProgressHUD setMinimumDismissTimeInterval:1.0];
-        [SVProgressHUD showSuccessWithStatus:@"收藏成功!"];
+        [[NetworkTool sharedNetworkTool] loadDataInfoPost:[COLLECTION_NOTE_API stringByAppendingFormat:@"/%@/notes/%@/collect" , [UserDefaults getUserId], self.model.noteId] parameters:nil success:^(id responseObject) {
+            NSNumber *collectId = responseObject[@"result"];
+            _model.collectId = collectId;
+            [_forwardBtn setSelected:YES];
+            [SVProgressHUD setMinimumDismissTimeInterval:1.0];
+            [SVProgressHUD showSuccessWithStatus:@"成功"];
+        } failure:^(NSError *error) {
+            [SVProgressHUD setMinimumDismissTimeInterval:1.0];
+            [SVProgressHUD showSuccessWithStatus:@"失败"];
+        }];
+
     }
 }
 
 - (void)likeButtonClick {
     if (_likeBtn.selected) {
         [_likeBtn setImage:[UIImage imageNamed:@"like"] forState:UIControlStateNormal];
-        [_likeBtn setSelected:NO];
         [[NetworkTool sharedNetworkTool] loadDataInfoDelete:[UNLIKE_NOTE_API stringByAppendingFormat:@"/%@/notes/%@/unlike", [UserDefaults getUserId], self.model.noteId] parameters:nil success:^(id responseObject) {
-
+            [_likeBtn setSelected:NO];
+            [SVProgressHUD setMinimumDismissTimeInterval:1.0];
+            [SVProgressHUD showSuccessWithStatus:@"取消点赞"];
         } failure:^(NSError *error) {
-
+            [SVProgressHUD setMinimumDismissTimeInterval:1.0];
+            [SVProgressHUD showSuccessWithStatus:@"失败"];
         }];
     } else {
         [_likeBtn setImage:[UIImage imageNamed:@"like_select"] forState:UIControlStateNormal];
-        [_likeBtn setSelected:YES];
         [[NetworkTool sharedNetworkTool] loadDataInfoPost:[LIKE_NOTE_API stringByAppendingFormat:@"/%@/notes/%@/like", [UserDefaults getUserId], self.model.noteId] parameters:nil success:^(id responseObject) {
-
+            [_likeBtn setSelected:YES];
+            NSNumber *likeId = responseObject[@"result"];
+            _model.likeId = likeId;
+            [SVProgressHUD setMinimumDismissTimeInterval:1.0];
+            [SVProgressHUD showSuccessWithStatus:@"点赞成功"];
         } failure:^(NSError *error) {
-
+            [SVProgressHUD setMinimumDismissTimeInterval:1.0];
+            [SVProgressHUD showSuccessWithStatus:@"点赞失败"];
         }];
     }
 }
 
 - (void)moveToUser {
     if (_delegate) {
-        [_delegate userMsgClick];
+        [_delegate userMsgClick:_model.userId];
     }
 }
 
@@ -284,7 +312,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return _model.imageArray.count;
+    return _model.img ? 1 : 0;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -292,7 +320,12 @@
     if (!cell) {
         cell = [[UICollectionViewCell alloc] init];
     }
-    cell.backgroundColor = [UIColor redColor];
+    UIImageView *imageView1 = [[UIImageView alloc] init];
+    [imageView1 sd_setImageWithURL:[NSURL URLWithString:[SEVER_IP stringByAppendingString:_model.img]]];
+    [cell addSubview:imageView1];
+    [imageView1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(cell);
+    }];
     return cell;
 }
 

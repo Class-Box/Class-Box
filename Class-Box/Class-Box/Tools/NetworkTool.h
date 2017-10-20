@@ -29,6 +29,11 @@
                    failure:(nullable void (^)(NSError *_Nullable error))failure;
 
 
+- (void)loadDataInfoWithImage:(nullable NSString *)URLString
+            parameters:(nullable id)parameters
+                    imageData:(NSData *)imageData
+               success:(nullable void (^)(id _Nullable responseObject))success
+               failure:(nullable void (^)(NSError *_Nullable error))failure;
 //发送GET请求, 附带json数据
 - (void)jsonGET:(NSString *)urlString
       parameters:(id)parameters

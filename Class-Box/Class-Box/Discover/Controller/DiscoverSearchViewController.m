@@ -7,6 +7,7 @@
 //
 
 #import <Masonry/NSArray+MASAdditions.h>
+#import <MJExtension/MJExtension.h>
 #import "DiscoverSearchViewController.h"
 #import "View+MASAdditions.h"
 #import "DiscoverMainCell.h"
@@ -14,6 +15,9 @@
 #import "DiscoverCommentController.h"
 #import "DiscoverUserCenterController.h"
 #import "DiscoverUserMsgCell.h"
+#import "NoteModel.h"
+#import "NetworkTool.h"
+#import "UserDefaults.h"
 
 typedef NS_ENUM(NSInteger, SearchModel) {
     SearchModelNote,
@@ -23,6 +27,9 @@ typedef NS_ENUM(NSInteger, SearchModel) {
 @interface  DiscoverSearchViewController()<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, DiscoverMainCellDelegate, UITextFieldDelegate>
 
 @property (nonatomic, assign)NSInteger searchModel;
+
+@property (nonatomic, copy)NSArray <User *> *userArray;
+@property (nonatomic, copy)NSArray <NoteModel *>*noteModelArray;
 
 @end
 
@@ -38,7 +45,20 @@ typedef NS_ENUM(NSInteger, SearchModel) {
     UITableView *_tableView;
 }
 
+#pragma mark - 懒加载
+- (NSArray<User *> *)userArray {
+    if (!_userArray) {
+        _userArray = [NSArray array];
+    }
+    return _userArray;
+}
 
+- (NSArray<NoteModel *> *)noteModelArray {
+    if (!_noteModelArray) {
+        _noteModelArray = [NSArray array];
+    }
+    return _noteModelArray;
+}
 #pragma mark - 生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -118,8 +138,6 @@ typedef NS_ENUM(NSInteger, SearchModel) {
     [_noteButton addTarget:self action:@selector(noteButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [_selectView addSubview:_noteButton];
 
-
-
     //用户
     _userButton = [[UIButton alloc] init];
     [_userButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
@@ -188,10 +206,10 @@ typedef NS_ENUM(NSInteger, SearchModel) {
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (self.searchModel) {
         case SearchModelNote: {
-            return 6;
+            return self.noteModelArray.count;
         }
         case SearchModelUser: {
-            return 6;
+            return self.userArray.count;
         }
         default:
             return nil;
@@ -205,12 +223,21 @@ typedef NS_ENUM(NSInteger, SearchModel) {
             if (!cell) {
                 cell = [[DiscoverMainCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"noteCell"];
             }
+            NoteModel *noteModel = self.noteModelArray[indexPath.row];
+
             DiscoverMainCellModel *model = [[DiscoverMainCellModel alloc] init];
             model.portrait = [UIImage imageNamed:@"People"];
-            model.userName = @"张力明";
-            model.content = @"这里是正文Content Hear, 这里是正文Content Hear, 这里是正文Content Hear, 这里是正文Content Hear, 这里是正文Content Hear, 这里是正文Content Hear";
-            model.imageArray = @[@"dad", @"dad", @"dad", @"dad", @"dad", @"dad", @"dad", @"dad", @"dad"];
-            model.publishDate = [[NSDate alloc] init];
+            model.userName = noteModel.author;
+            model.content = noteModel.content;
+            model.publishDate = noteModel.createdAt;
+            model.courseName = noteModel.courseName;
+            model.noteId = noteModel.id;
+            model.likeId = noteModel.likeId;
+            model.userId = noteModel.authorId;
+            model.collectId = noteModel.iscollected;
+            if (noteModel.imgs) {
+                model.img = noteModel.imgs;
+            }
             [cell setModel:model];
             cell.delegate = self;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -221,6 +248,8 @@ typedef NS_ENUM(NSInteger, SearchModel) {
             if (!cell) {
                 cell = [[DiscoverUserMsgCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"userCell"];
             }
+            User *user = self.userArray[indexPath.row];
+            [cell setUserModel:user];
             return cell;
         }
         default: {
@@ -247,25 +276,46 @@ typedef NS_ENUM(NSInteger, SearchModel) {
     [self.view endEditing:YES];
 }
 
-#pragma mark - DiscoverMainCellDelegate
-- (void)commentButtonClick {
-    [self.navigationController pushViewController:[[DiscoverCommentController alloc] init] animated:YES];
-}
-
-- (void)userMsgClick {
-    [self.navigationController pushViewController:[[DiscoverUserCenterController alloc] init] animated:YES];
-}
-
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self.view endEditing:YES];
     if (![_searchTextField.text isEqualToString:@""]) {
+        if (_searchModel == SearchModelNote) {
+            [[NetworkTool sharedNetworkTool] loadDataInfo:SEARCH_NOTE_API parameters:@{
+                    @"content" : _searchTextField.text
+            } success:^(id responseObject) {
+                NSArray <NoteModel *> *noteArray = responseObject[@"notes"];
+                self.noteModelArray = [NoteModel mj_objectArrayWithKeyValuesArray:noteArray];
+                [_tableView reloadData];
+            } failure:^(NSError *error) {
+                NSLog(@"%@", error);
+            }];
+        } else if  (_searchModel == SearchModelUser) {
+            [[NetworkTool sharedNetworkTool] loadDataInfo:SEARCH_USER_API parameters:@{
+                    @"username" : _searchTextField.text
+            } success:^(id responseObject) {
+                    NSArray <User * > *userArray = responseObject[@"users"];
+                    self.userArray = [User mj_objectArrayWithKeyValuesArray:userArray];
+                [_tableView reloadData];
+            } failure:^(NSError *error) {
 
+            }];
+        }
     }
     return YES;
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
     return YES;
+}
+
+#pragma mark - DiscoverMainCellDelegate
+- (void)commentButtonClick:(NSNumber *)noteId {
+    [self.navigationController pushViewController:[[DiscoverCommentController alloc] initWithNoteId:noteId] animated:YES];
+}
+
+- (void)userMsgClick:(NSNumber *)userId {
+    DiscoverUserCenterController *userCenterController = [[DiscoverUserCenterController alloc] initWithUserId:userId];
+    [self.navigationController pushViewController:userCenterController animated:YES];
 }
 @end

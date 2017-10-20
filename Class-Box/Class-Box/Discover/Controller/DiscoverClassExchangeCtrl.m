@@ -13,14 +13,28 @@
 #import "DiscoverCommentController.h"
 #import "DiscoverUserCenterController.h"
 #import "DiscoverClassmateCtrl.h"
+#import "NoteModel.h"
+#import "NetworkTool.h"
+#import "MJExtension.h"
+#import "UserDefaults.h"
 
 @interface DiscoverClassExchangeCtrl()<UITableViewDelegate, UITableViewDataSource, DiscoverMainCellDelegate>
 
 @property (nonatomic, strong)UITableView *tableView;
+@property (nonatomic, copy)NSArray <NoteModel *> *noteArray;
+
 @end
 
 @implementation DiscoverClassExchangeCtrl {
 
+}
+
+#pragma mark - 懒加载
+- (NSArray <NoteModel *>*)noteArray {
+    if (!_noteArray) {
+        _noteArray = [NSArray array];
+    }
+    return _noteArray;
 }
 
 #pragma mark - 生命周期
@@ -29,6 +43,7 @@
     [self setTitle:@"班级圈"];
     [self setUpNavigationBar];
     [self setUpView];
+    [self.tableView.mj_header beginRefreshing];
 }
 
 - (BOOL)hidesBottomBarWhenPushed {
@@ -49,6 +64,7 @@
     }];
     [self.tableView registerClass:[DiscoverMainCell class] forCellReuseIdentifier:@"cell"];
     self.tableView.estimatedRowHeight = 400;
+    self.tableView.tableFooterView = [[UIView alloc] init];
     [self setRefresh];
 }
 
@@ -64,6 +80,14 @@
 }
 //加载最新数据
 - (void)loadNewData {
+    [[NetworkTool sharedNetworkTool] loadDataInfo:[LIST_CLASSMATE_NOTE_APT stringByAppendingFormat:@"/%@/classes/%@/notes", [UserDefaults getUserId], [UserDefaults getUserClassId]] parameters:nil success:^(id responseObject) {
+        NSArray *records = responseObject[@"result"][@"records"];
+        self.noteArray = [NoteModel mj_objectArrayWithKeyValuesArray:records];
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+
+    }];
+    [self.tableView.header endRefreshing];
 
     [self.tableView.header endRefreshing];
 }
@@ -74,7 +98,7 @@
 
 #pragma mark - TableView Delegate DataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 30;
+    return self.noteArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -82,13 +106,21 @@
     if (!cell) {
         cell = [[DiscoverMainCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
+
+    NoteModel *noteModel = self.noteArray[indexPath.row];
+
     DiscoverMainCellModel *model = [[DiscoverMainCellModel alloc] init];
     model.portrait = [UIImage imageNamed:@"People"];
-    model.userName = @"张力明";
-    model.content = @"这里是正文Content Hear, 这里是正文Content Hear, 这里是正文Content Hear, 这里是正文Content Hear, 这里是正文Content Hear, 这里是正文Content Hear";
-    model.imageArray = @[@"dad", @"dad", @"dad", @"dad", @"dad", @"dad", @"dad", @"dad", @"dad"];
-    model.publishDate = [[NSDate alloc] init];
-    model.courseName = @"Java开发";
+    model.userName = noteModel.author;
+    model.content = noteModel.content;
+    model.publishDate = noteModel.createdAt;
+    model.courseName = noteModel.courseName;
+    model.noteId = noteModel.id;
+    model.likeId = noteModel.likeId;
+    model.collectId = noteModel.iscollected;
+    if (noteModel.imgs) {
+        model.img = noteModel.imgs;
+    }
     [cell setModel:model];
     cell.delegate = self;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
