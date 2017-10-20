@@ -7,6 +7,7 @@
 //
 
 #import "MeViewController.h"
+#import "UserDefaults.h"
 #import "MeHeadTableViewCell.h"
 #import "Masonry.h"
 #import "MainNoteController.h"
@@ -14,6 +15,8 @@
 #import "SettingController.h"
 #import "UserMsgSetController.h"
 #import "DiscoverUserCenterController.h"
+#import "LoginViewController.h"
+#import "TimeTableViewController.h"
 
 @interface MeViewController ()
 
@@ -125,11 +128,23 @@
     button.layer.borderColor = [UIColor redColor].CGColor;
     button.titleLabel.font = [UIFont systemFontOfSize:16];
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, S_WIDTH, 64)];
+    [button addTarget:self action:@selector(btnClicked) forControlEvents:UIControlEventTouchUpInside];
     [footerView addSubview:button];
     [button mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.insets(UIEdgeInsetsMake(10, 50, 10, 50));
     }];
     return footerView;
+}
+
+- (void)btnClicked {
+    self.tabBarController.selectedIndex = 0;
+    [UserDefaults removeUser];
+    LoginViewController *loginVc = [LoginViewController new];
+    UINavigationController *nvc = ((UINavigationController *)self.tabBarController.selectedViewController);
+     TimeTableViewController *ttvc = nvc.topViewController;
+    [self.tabBarController.selectedViewController pushViewController:loginVc animated:YES];
+    
+    ttvc.needLoad = YES;
 }
 
 @end

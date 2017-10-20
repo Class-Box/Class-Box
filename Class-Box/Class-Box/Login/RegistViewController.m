@@ -7,6 +7,7 @@
 //
 
 #import "RegistViewController.h"
+#import "UserDefaults.h"
 
 @interface RegistViewController ()
 
@@ -59,6 +60,11 @@
         
         [self.navigationController setNavigationBarHidden:NO];
         [self.navigationController popToRootViewControllerAnimated:YES];
+        User *user = [[User alloc] init];
+        user.username = account;
+        user.password = password;
+        user.name = name;
+        [UserDefaults setUser:user];
         
     } failure:^(NSError * _Nullable error) {
         [Toast showInfo:@"注册出错"];

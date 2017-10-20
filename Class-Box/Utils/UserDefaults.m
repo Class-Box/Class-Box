@@ -7,7 +7,6 @@
 //
 
 #import "UserDefaults.h"
-#import "MJExtension.h"
 
 #define USERKEY @"userkey"
 
@@ -49,13 +48,23 @@
     [self setValue:user.mj_JSONString key:USERKEY];
 }
 
++ (void)removeUser {
+    [self removeValueForKey:USERKEY];
+}
+
++ (void)removeValueForKey:(NSString *)key {
+    NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
+    [userDefaults removeObjectForKey:key];
+    [userDefaults synchronize];
+}
+
 + (void)setValue:(id)value key:(NSString *)key {
     NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
     [userDefaults setValue:value forKey:key];
     [userDefaults synchronize];
 }
 
-+ (instancetype)getValue:(NSString *)key {
++ (id)getValue:(NSString *)key {
     return [[NSUserDefaults standardUserDefaults] valueForKey:key];
 }
 

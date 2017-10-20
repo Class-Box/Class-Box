@@ -44,7 +44,7 @@
     [[NetworkTool sharedNetworkTool] loadDataInfoPost:LOGINURL parameters:@{@"username" : account , @"password" : password} success:^(id  _Nullable responseObject) {
         
         self.navigationController.navigationBarHidden = NO;
-        User *user = [User mj_objectWithKeyValues:responseObject];
+        User *user = [User mj_objectWithKeyValues:responseObject[@"user"]];
         [UserDefaults setUser:user];
         [self.navigationController popViewControllerAnimated:YES];
     } failure:^(NSError * _Nullable error) {

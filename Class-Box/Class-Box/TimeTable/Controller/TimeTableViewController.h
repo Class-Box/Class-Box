@@ -12,4 +12,6 @@
 
 - (void)loadData:(NSString *)year term:(NSString *)term;
 
+@property (nonatomic) BOOL needLoad;
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "SchoolLoginViewController.h"
+#import "UserDefaults.h"
 #import "UIImageView+WebCache.h"
 #import "NetworkTool.h"
 #import "TimeTableViewController.h"
@@ -50,7 +51,13 @@
         
         [[NetworkTool sharedNetworkTool] loadDataInfoPost:PERSONINFOBINDURL parameters:@{@"instituteName" : instituteName , @"majorName" : majorName , @"className" : className , userId : @"userId" , @"schoolName" : @"浙江科技学院"} success:^(id  _Nullable responseObject) {
             
-            NSDictionary *dict =responseObject;
+            NSDictionary *dict = responseObject[@"result"];
+            User *user = [UserDefaults getUser];
+            user.instituteId = dict[@"instituteId"];
+            user.majorId = dict[@"majorId"];
+            user.classId = dict[@"classId"];
+            user.schoolId = dict[@"schoolId"];
+            [UserDefaults setUser:user];
             
         } failure:^(NSError * _Nullable error) {
             

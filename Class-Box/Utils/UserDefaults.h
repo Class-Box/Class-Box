@@ -6,7 +6,7 @@
 //  Copyright © 2017年 sherlock. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "MJExtension.h"
 
 @interface User : NSObject
 
@@ -33,11 +33,15 @@
 
 + (User *)getUser;
 
++ (void)removeUser;
+
 + (void)setUser:(User *)user;
 
 + (void)setValue:(id)value key:(NSString *)key;
 
-+ (instancetype)getValue:(NSString *)key;
++ (void)removeValueForKey:(NSString *)key;
+
++ (id)getValue:(NSString *)key;
 
 + (NSNumber *)getUserId;
 

@@ -30,8 +30,6 @@
 @property(nonatomic) TimeTableDetailsView *detailsView;
 @property(nonatomic) SemesterView *semesterView;
 
-@property(nonatomic) Boolean isFirst;
-
 @property(nonatomic) NSArray *timetableData;
 
 @end
@@ -52,23 +50,22 @@
     self.navigationItem.titleView = btn;
 
     [self initViews];
-    self.isFirst = YES;
+    self.needLoad = YES;
     
     User *user = [UserDefaults getUser];
     if (!user) {
         LoginViewController *loginVc = [LoginViewController new];
         [self.navigationController pushViewController:loginVc animated:YES];
     }
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    if (_isFirst) {
-        _isFirst = NO;
+    if (self.needLoad) {
         SchoolLoginViewController *svc = [SchoolLoginViewController new];
         svc.vc = self;
+        self.needLoad = NO;
         [self presentViewController:svc animated:YES completion:nil];
     }
 }
@@ -80,6 +77,7 @@
     __weak typeof(self) weakself = self;
     self.semesterView.btnClicked = ^(NSString *year, NSString *term) {
         [weakself loadData:year term:term];
+        weakself.navigationItem.title = @"其它学期";
     };
     
     [self.view addSubview:self.semesterView];
