@@ -47,9 +47,9 @@
         NSString *instituteName = dict[@"lbl_xy"];
         NSString *majorName = dict[@"lbl_zymc"];
         NSString *className = dict[@"lbl_xzb"];
-        NSString *userId = dict[@"xm"];
+        NSNumber *userId = [UserDefaults getUserId];
         
-        [[NetworkTool sharedNetworkTool] loadDataInfoPost:PERSONINFOBINDURL parameters:@{@"instituteName" : instituteName , @"majorName" : majorName , @"className" : className , userId : @"userId" , @"schoolName" : @"浙江科技学院"} success:^(id  _Nullable responseObject) {
+        [[NetworkTool sharedNetworkTool] loadDataInfoPost:PERSONINFOBINDURL parameters:@{@"instituteName" : instituteName , @"majorName" : majorName , @"className" : className , @"userId" : userId , @"schoolName" : @"浙江科技学院"} success:^(id  _Nullable responseObject) {
             
             NSDictionary *dict = responseObject[@"result"];
             User *user = [UserDefaults getUser];
